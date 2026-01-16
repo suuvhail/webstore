@@ -1,0 +1,43 @@
+.partners-section {
+    background: #050b1f;
+    padding: 40px 0;
+    overflow: hidden;
+  }
+  
+  .partners-slider {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .partners-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    animation: scroll 20s linear infinite;
+  }
+  
+  .partners-track img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: 0.3s;
+  }
+  
+  .partners-track img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  /* Animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
