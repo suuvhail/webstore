@@ -1,0 +1,161 @@
+body {
+  font-family: "Inter", sans-serif;
+  color: #000;
+  background: #fff;
+}
+.gucci-contact {
+  padding-top: 80px;
+}
+
+.gucci-title {
+  font-family: "Playfair Display", serif;
+  font-size: 44px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.gucci-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 70px;
+}
+
+.gucci-info p {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.gucci-sections {
+  margin-top: 60px;
+}
+
+.gucci-block h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+}
+
+.gucci-block p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+.gucci-form {
+  padding-top: 80px;
+}
+
+.gucci-form-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.gucci-form-subtitle {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+}
+
+.gucci-input,
+.gucci-textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 10px 0;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  background: transparent;
+  outline: none;
+}
+
+.gucci-input::placeholder,
+.gucci-textarea::placeholder {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}
+
+.gucci-input:focus,
+.gucci-textarea:focus {
+  border-bottom: 1px solid #000;
+}
+
+.gucci-textarea {
+  resize: none;
+}
+
+.gucci-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 10px 0;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.gucci-btn:hover {
+  opacity: 0.6;
+}
+
+.gucci-form-note {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.gucci-form-note a {
+  color: #000;
+  text-decoration: underline;
+}
+/* Fade + slide animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left section animation */
+.gucci-contact {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* Right form animation (slight delay) */
+.gucci-form {
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+.gucci-input,
+.gucci-textarea {
+  transition: all 0.3s ease;
+}
+.gucci-icon {
+  transition: transform 0.3s ease;
+}
+
+.gucci-info p:hover .gucci-icon {
+  transform: scale(1.2);
+}
+.gucci-block {
+  transition: all 0.3s ease;
+}
+
+.gucci-block:hover {
+  transform: translateY(-6px);
+}
