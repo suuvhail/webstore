@@ -3,38 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Hero | Gucci Inspired</title>
+    <title>Luxury Hero</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-       
-
-        /* [STYLE: NAVIGATION] - Transparent to White transition */
+        /* NAVBAR */
         .navbar-custom {
             position: fixed;
             top: 0;
             width: 100%;
             background: transparent;
-            transition: all 0.4s ease;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
             z-index: 1000;
-            padding: 20px 0;
         }
 
         .navbar-custom.scrolled {
             background: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            padding: 10px 0;
         }
 
+        /* Navbar text */
         .navbar-brand,
         .nav-link,
         .navbar i {
@@ -48,6 +44,7 @@
             color: black !important;
         }
 
+        /* Toggler icon */
         .navbar-toggler {
             border: none;
         }
@@ -60,38 +57,43 @@
             filter: invert(0);
         }
 
-        /* [STYLE: HERO] - Fixed height for PC (face focus) vs Full for Mobile */
+        /* HERO */
         .hero {
             position: relative;
+            /* Base styles */
             background-image: url("./Media/Homepage/bg.jpg");
             background-size: cover;
+            /* Matches your zoom-effect starting point */
             background-position: top center;
+            /* Focuses on the face/top of the image */
             background-repeat: no-repeat;
+            transition: background-size 0.3s ease;
             display: flex;
             align-items: flex-end;
             justify-content: center;
             padding-bottom: 80px;
-            overflow: hidden;
         }
 
-
-
-        /* Mobile shows full image */
-
+        /* Hero content */
         .hero-content {
             width: 300px;
             text-align: center;
             color: white;
-            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
         .hero-button {
             height: 50px;
-            width: 120px;
+            width: 100px;
             transition: all 0.3s ease;
+            transform-origin: center;
             background-color: white;
             border: none;
-            border-radius: 0;
+            border-radius: 5px;
             font-size: 11px;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -100,17 +102,19 @@
 
         .hero-button:hover {
             transform: scale(0.9);
-            background-color: #f8f8f8;
         }
 
-        /* [STYLE: CATEGORIES] - The Shrink Effect */
+
+
         .category-card {
             text-decoration: none;
             color: #000;
             display: block;
             transition: transform 0.3s ease-in-out;
+            cursor: pointer;
         }
 
+        /* The "Shrink" effect on hover */
         .category-card:hover {
             transform: scale(0.96);
         }
@@ -118,21 +122,34 @@
         .category-img {
             width: 100%;
             height: auto;
+            background-color: #f8f8f8;
+            /* Placeholder color */
             margin-bottom: 15px;
         }
 
-        /* [STYLE: MID-BANNERS] - Responsive split images */
+        .category-title {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+
         .hero-card {
             background-repeat: no-repeat;
             background-size: cover;
+            /* Prioritizes the face/top of the image */
             background-position: top center;
             transition: transform 0.3s ease;
             overflow: hidden;
-            height: 600px;
         }
 
 
-
+        /* Background Image Links */
         .men-bg {
             background-image: url('./Media/Homepage/New_Me.jpg');
         }
@@ -141,7 +158,13 @@
             background-image: url('./Media/Homepage/New_Wo.jpg');
         }
 
-        /* [STYLE: SERVICES] - Video grid */
+        .category-title {
+            font-weight: 500;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+        }
+
         .service-media-wrapper {
             width: 100%;
             aspect-ratio: 1 / 1;
@@ -188,48 +211,74 @@
             opacity: 0.8;
         }
 
-        /* [STYLE: BLACK SECTION & REVEAL ANIMATION] */
+        .offcanvas-backdrop.show {
+            opacity: 0.9;
+            /* Adjust transparency here */
+            background-color: #000;
+        }
+
         .bg-black {
             background-color: #000 !important;
         }
 
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-
-        .reveal-text.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .rotate-icon {
-            transition: transform 0.4s ease;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        .subscribe-trigger:hover .rotate-icon {
-            transform: rotate(90deg);
-        }
-
-        /* [STYLE: OFFCANVAS] - Transparent Backdrop */
-        .offcanvas-backdrop.show {
-            opacity: 0.9;
-
+        .btn-black {
             background-color: #000;
+            color: #fff;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-black:hover {
+            background-color: #333;
+            color: #fff;
         }
 
         .no-focus-outline:focus {
             box-shadow: none !important;
-            border-color: #000 !important;
+            outline: none;
+        }
+
+        .very-small-text {
+            font-size: 11px;
+            line-height: 1.5;
         }
 
 
+        .rotate-icon {
+            transition: transform 0.4s ease-in-out;
+            display: inline-block;
+            /* Essential for rotation to work */
+            margin-right: 5px;
+        }
+
+        /* 2. Rotate when the parent button is hovered */
+        .subscribe-trigger:hover .rotate-icon {
+            transform: rotate(90deg);
+            /* Change to 45deg if you want it to look like an 'x' */
+        }
+
+        /* Optional: Slight scaling effect on the whole button */
+        .subscribe-trigger:hover {
+            opacity: 0.8;
+        }
+
+
+
+        /* Desktop View: Limit height to show only top half */
         @media (min-width: 768px) {
             .hero {
-                height: 100vh;
+                height: 120vh;
+                /* Shorter height clips the long image to the top half */
+            }
+
+            .hero-card {
+                height: 600px;
+                /* Adjust this value to show more or less of the face */
+            }
+
+            /* The shrink effect you requested previously */
+            .hero-card:hover {
+                transform: scale(0.98);
             }
 
             .offcanvas.offcanvas-end {
@@ -238,19 +287,23 @@
             }
         }
 
-        /* PC View crops to top half */
+        /* Mobile View: Show the full long image */
         @media (max-width: 767px) {
             .hero {
+                /* aspect-ratio ensures the container is tall enough to fit the whole image */
+                /* For a standard portrait, 2/3 or 9/16 works well */
                 aspect-ratio: 9 / 16;
                 height: auto;
+                background-size: cover;
+                /* Ensures full width coverage on mobile */
             }
-        }
 
-        @media (max-width: 767px) {
             .hero-card {
-                aspect-ratio: 2/3;
+                /* Adjusts height based on the image's natural ratio */
+                aspect-ratio: 2 / 3;
                 height: auto;
             }
+            
         }
     </style>
 </head>
@@ -259,89 +312,101 @@
 
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-3" href="#">BISUM</a>
+
+            <a class="navbar-brand fw-bold fs-3" href="#">Bisum</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav mx-auto gap-lg-3 text-uppercase small">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                <ul class="navbar-nav mx-auto gap-lg-3">
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#">Pages</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold" href="#">Contact</a></li>
                 </ul>
-                <div class="d-flex gap-3 fs-5">
+
+                <div class="d-flex gap-3">
                     <i class="bi bi-heart"></i>
                     <i class="bi bi-bag"></i>
                 </div>
             </div>
+
         </div>
     </nav>
 
+
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="text-uppercase fw-light letter-spacing-2">La Famiglia</h1>
-            <div class="d-flex justify-content-between gap-2">
-                <button class="hero-button">For Her</button>
-                <button class="hero-button">For Him</button>
+            <h1>La Famiglia</h1>
+            <div class="hero-buttons d-flex justify-content-around">
+                <button class="hero-button">FOR HER</button>
+                <button class="hero-button">FOR HIM</button>
             </div>
         </div>
     </section>
+
+
 
     <section class="container py-5 text-center">
-        <h2 class="section-title text-uppercase mb-5">Explore the New Styles</h2>
-        <div class="row g-4">
+        <h2 class="section-title text-uppercase">Explore the New Styles</h2>
+
+        <div class="row g-4 ">
             <div class="col-12 col-md-3">
                 <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Women'sBags.avif" class="category-img">
-                    <p class="category-title text-uppercase">Women's Handbags</p>
+                    <img src="./Media/Homepage/Women'sBags.avif" alt="Women's Handbags" class="category-img">
+                    <p class="category-title">Women's Handbags</p>
                 </a>
             </div>
+
             <div class="col-12 col-md-3">
                 <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Women'sShoes.avif" class="category-img">
-                    <p class="category-title text-uppercase">Women's Shoes</p>
+                    <img src="./Media/Homepage/Women'sShoes.avif" alt="Women's Shoes" class="category-img">
+                    <p class="category-title">Women's Shoes</p>
                 </a>
             </div>
+
             <div class="col-12 col-md-3">
                 <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Men'sShoes.avif" class="category-img">
-                    <p class="category-title text-uppercase">Men's Shoes</p>
+                    <img src="./Media/Homepage/Men'sShoes.avif" alt="Men's Shoes" class="category-img">
+                    <p class="category-title">Men's Shoes</p>
                 </a>
             </div>
+
             <div class="col-12 col-md-3">
                 <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Men'sBags.avif" class="category-img">
-                    <p class="category-title text-uppercase">Men's Bags</p>
+                    <img src="./Media/Homepage/Men'sBags.avif" alt="Men's Bags" class="category-img">
+                    <p class="category-title">Men's Bags</p>
                 </a>
             </div>
         </div>
     </section>
 
-  
-
-    <section class="container-fluid px-md-5 mb-5">
+    <section class="container-fluid second-cat px-md-5">
         <div class="row g-3">
             <div class="col-md-6 col-12">
                 <div class="hero-card men-bg d-flex flex-column justify-content-end align-items-center pb-5">
                     <div class="text-center text-white">
                         <h2 class="category-title">New In for Men</h2>
-                        <a href="#" class="btn btn-outline-light rounded-0 px-4 py-2 text-uppercase small fw-bold">Shop
-                            Now</a>
+                        <a href="#" class="btn btn-outline-light rounded-0 px-4 py-2">SHOP NOW</a>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6 col-12">
                 <div class="hero-card women-bg d-flex flex-column justify-content-end align-items-center pb-5">
                     <div class="text-center text-white">
                         <h2 class="category-title">Women's Mini Bags</h2>
-                        <a href="#" class="btn btn-outline-light rounded-0 px-4 py-2 text-uppercase small fw-bold">Shop
-                            Now</a>
+                        <a href="#" class="btn btn-outline-light rounded-0 px-4 py-2">SHOP NOW</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <section class="container py-5">
@@ -393,21 +458,22 @@
         </div>
     </section>
 
+     <!-- Black Section -->
     <section class="bg-black text-white text-center py-5">
-        <div class="container py-5">
-            <p class="text-uppercase small fw-bold mb-4 reveal-text" style="letter-spacing: 2px;">Sign up for updates
-            </p>
-            <h2 class="display-6 fw-light mb-4 px-md-5 reveal-text">Get exclusive updates on the latest news and
-                personalized communication.</h2>
-            <div class="reveal-text">
-                <button class="btn text-white p-0 border-0 subscribe-trigger" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#newsletterDrawer">
-                    <span class="fs-4 fw-light rotate-icon">+</span>
-                    <span class="fs-4 fw-light">Subscribe</span>
-                </button>
-            </div>
+        <div class="container py-4">
+            <p class="text-uppercase small fw-bold mb-4" style="letter-spacing: 2px;">Sign up for Gucci updates</p>
+            <h2 class="display-6 fw-light mb-4 px-md-5">Get exclusive updates on the collection's launch, personalized
+                communication and the House's latest news.</h2>
+
+            <button class="btn text-white p-0 border-0 subscribe-trigger" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#newsletterDrawer">
+                <span class="fs-4 fw-light d-inline-block rotate-icon">+</span>
+                <span class="fs-4 fw-light">Subscribe</span>
+            </button>
         </div>
     </section>
+
+     <!-- Black Section OffCanvas -->
 
     <div class="offcanvas offcanvas-end w-md-50 w-100" tabindex="-1" id="newsletterDrawer"
         aria-labelledby="newsletterDrawerLabel">
@@ -424,7 +490,7 @@
                     interests.
                 </p>
                 <p class="very-small-text text-muted mb-5">
-                    By clicking “SubScrib”, you confirm that you have acknowledged our <a href="#"
+                    By clicking “CREATE MY PROFILE”, you confirm that you have acknowledged our <a href="#"
                         class="text-dark">Privacy Policy</a> and <a href="#" class="text-dark">Terms of Use</a>... <a
                         href="#" class="text-dark text-decoration-underline">Read More</a>
                 </p>
@@ -434,43 +500,38 @@
                         <input type="email" class="form-control border-0 rounded-0 px-0 py-3 no-focus-outline"
                             placeholder="Email Address" required>
                     </div>
-                    <button type="submit"
-                        class="btn btn-black w-100 rounded-0 py-3 fw-bold text-uppercase small">Subscribe</button>
+                    <button type="submit" class="btn btn-black w-100 rounded-0 py-3 fw-bold text-uppercase small">Create
+                        My Profile</button>
                 </form>
             </div>
         </div>
     </div>
 
 
-    <!--Footer here !!! -->
+
+    <!-- Footer -->
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // [JS: NAVBAR & HERO ZOOM]
         const navbar = document.querySelector('.navbar-custom');
         const hero = document.querySelector('.hero');
 
         window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 80);
+            const scrollY = window.scrollY;
+
+
+            navbar.classList.toggle('scrolled', scrollY > 80);
+
             if (window.innerWidth > 768) {
-                hero.style.backgroundSize = `${100 + window.scrollY / 50}%`;
+                hero.style.backgroundSize = `${110 + scrollY / 50}%`;
+            }
+
+            if (scrollY > 50) {
+                hero.classList.add('show-buttons');
             }
         });
-
-        // [JS: REVEAL ANIMATION] - Trigger when section is in view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.reveal-text').forEach((el, i) => {
-                        setTimeout(() => el.classList.add('active'), i * 200);
-                    });
-                }
-            });
-        }, { threshold: 0.3 });
-
-        observer.observe(document.querySelector('.bg-black'));
     </script>
 </body>
 
