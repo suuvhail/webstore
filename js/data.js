@@ -134,21 +134,10 @@ const Women_Products = [
         wOrm: "W",
         category: "bags",
     
-    },
-
-    
-
-
-    {
-        id: ,
-        title: "",
-        prix:  3100,
-        Description: "",
-        mainVideo: "",
-        images: ["","","" ],
-        wOrm: "",
-        category: "",
-    
     }
+
+    
+
+
 
 ]
