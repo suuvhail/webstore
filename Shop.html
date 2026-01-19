@@ -53,7 +53,7 @@
     <div class="container mt-5">
       <h1 class="text-center mb-5">shop</h1>
       <div class="row">
-        <div class="col-md-3 mb-5" id="NomobileFilter">
+        <div class="col-md-3 mb-5" id="NomobileFilter" >
           <aside class="border-end pe-4">
 
             <!-- FILTER TITLE -->
@@ -214,60 +214,110 @@
   </section>
 
   <script src="./js/products.js"></script>
+
   <script type="module">
-    // import your products array if it's in a separate JS file
-
-    // Example: if products are already declared in products.js
+    // Assuming 'products' is imported or declared above
     const container = document.getElementById('productsContainer');
-
-    // Shuffle function
+    const applyFilterBtn = document.querySelector('#filterOffcanvas .btn-dark');
+  
+    // 1. Shuffle function
     function shuffleArray(array) {
       return array.sort(() => Math.random() - 0.5);
     }
-
-    // Shuffle products
-    const shuffledProducts = shuffleArray(products);
-
-    // Generate cards
-    shuffledProducts.forEach(product => {
-      const col = document.createElement('div');
-      col.className = 'col-lg-4 col-sm-6 col-12 mb-4 product-card';
-      col.setAttribute('data-gender', product.wOrm);
-      col.setAttribute('data-category', product.category);
-      col.setAttribute('data-price', product.prix);
-
-      col.innerHTML = `
-        <div class="card border-0" style="height: 500px; display: flex; flex-direction: column;">
-          
-          <div class="position-relative flex-grow-1 overflow-hidden">
-            
-            <div class="position-absolute top-0 end-0 p-2 d-flex gap-2 z-1">
-              <button class="btn btn-light btn-sm shadow-sm"><i class="bi bi-heart"></i></button>
-              <button class="btn btn-light btn-sm shadow-sm"><i class="bi bi-bag"></i></button>
+  
+    // 2. The Render Function
+    // This replaces your old .forEach loop so we can call it multiple times
+    function renderProducts(productsList) {
+      container.innerHTML = ''; // Clear current view
+  
+      productsList.forEach(product => {
+        const col = document.createElement('div');
+        col.className = 'col-lg-4 col-sm-6 col-12 mb-4 product-card';
+        
+        col.innerHTML = `
+          <div class="card border-0" style="height: 500px; display: flex; flex-direction: column;">
+            <div class="position-relative flex-grow-1 overflow-hidden">
+              <div class="position-absolute top-0 end-0 p-2 d-flex gap-2 z-1">
+                <button class="btn btn-light btn-sm shadow-sm"><i class="bi bi-heart"></i></button>
+                <button class="btn btn-light btn-sm shadow-sm"><i class="bi bi-bag"></i></button>
+              </div>
+              <div style="
+                background-image: url('${product.images[0]}');
+                background-size: cover;
+                background-position: center;
+                width: 100%;
+                height: 100%;
+              "></div>
             </div>
-
-            <div style="
-              background-image: url('${product.images[0]}');
-              background-size: cover;
-              background-position: center;
-              width: 100%;
-              height: 100%;
-            "></div>
+            <div class="text-center py-3 bg-white">
+              <h6 class="mb-1 text-uppercase small" style="
+                white-space: nowrap; 
+                overflow: hidden; 
+                text-overflow: ellipsis; 
+                display: block;
+                padding: 0 10px;
+              ">${product.title}</h6>
+              <p class="mb-2 fw-semibold">${product.prix} €</p>
+              <a href="#" class="btn btn-outline-dark btn-sm">View</a>
+            </div>
           </div>
-
-          <div class="text-center py-3 bg-white">
-            <h6 class="mb-1 text-uppercase small">${product.title}</h6>
-            <p class="mb-2 fw-semibold">${product.prix} €</p>
-            <a href="#" class="btn btn-outline-dark btn-sm">View</a>
-          </div>
-
-        </div>
-      `;
-
-      container.appendChild(col);
-    });
+        `;
+        container.appendChild(col);
+      });
+    }
+  
+    // 3. The Filter Logic
+    function handleFilters() {
+      // Collect checked values
+      const selectedGenders = Array.from(document.querySelectorAll('#filterOffcanvas input[id$="-mob"]:checked'))
+                                   .filter(i => i.id.includes('men') || i.id.includes('women'))
+                                   .map(i => i.value);
+  
+      const selectedCategories = Array.from(document.querySelectorAll('#filterOffcanvas input[id$="-mob"]:checked'))
+                                       .filter(i => i.id.includes('shoes') || i.id.includes('bags'))
+                                       .map(i => i.value.toLowerCase());
+  
+      const selectedPrices = Array.from(document.querySelectorAll('#filterOffcanvas input[value*="-"], #filterOffcanvas input[value*="+"]:checked'))
+                                  .filter(i => i.checked)
+                                  .map(i => i.value);
+  
+      // Filter the original array
+      const filteredProducts = products.filter(product => {
+        // Check Gender
+        const matchesGender = selectedGenders.length === 0 || selectedGenders.includes(product.wOrm);
+        
+        // Check Category
+        const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category.toLowerCase());
+  
+        // Check Price
+        let matchesPrice = selectedPrices.length === 0;
+        if (selectedPrices.length > 0) {
+          selectedPrices.forEach(range => {
+            if (range === "0-1000" && product.prix <= 1000) matchesPrice = true;
+            if (range === "1000-2000" && product.prix > 1000 && product.prix <= 2000) matchesPrice = true;
+            if (range === "2000+" && product.prix > 2000) matchesPrice = true;
+          });
+        }
+  
+        return matchesGender && matchesCategory && matchesPrice;
+      });
+  
+      // Render the new list
+      renderProducts(filteredProducts);
+  
+      // Close the Bootstrap Offcanvas
+      const offcanvasEl = document.getElementById('filterOffcanvas');
+      const instance = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      if (instance) instance.hide();
+    }
+  
+    // 4. Initialization
+    // Shuffle and show all products on first load
+    renderProducts(shuffleArray([...products]));
+  
+    // Listen for the "Apply Filters" button click
+    applyFilterBtn.addEventListener('click', handleFilters);
   </script>
-
 
 </body>
 

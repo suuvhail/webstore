@@ -65,7 +65,8 @@ const products = [
     wOrm: "M",
     category: "bags",
 
-},{
+},
+{
     id: 7,
     title: "Women's Bombshell boot",
     prix: 2300 ,
