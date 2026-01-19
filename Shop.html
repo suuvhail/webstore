@@ -53,13 +53,13 @@
     <div class="container mt-5">
       <h1 class="text-center mb-5">shop</h1>
       <div class="row">
-        <div class="col-md-3 mb-5" id="NomobileFilter" >
+        <div class="col-md-3 mb-5" id="NomobileFilter">
           <aside class="border-end pe-4">
 
-            <!-- FILTER TITLE -->
+           
             <h5 class="text-uppercase fw-bold mb-4">Filter</h5>
 
-            <!-- GENDER FILTER -->
+          
             <div class="mb-4">
               <h6 class="fw-semibold text-uppercase small mb-3">Gender</h6>
               <div class="form-check">
@@ -72,7 +72,7 @@
               </div>
             </div>
 
-            <!-- CATEGORY FILTER -->
+          
             <div class="mb-4">
               <h6 class="fw-semibold text-uppercase small mb-3">Category</h6>
               <div class="form-check">
@@ -85,7 +85,7 @@
               </div>
             </div>
 
-            <!-- PRICE FILTER -->
+           
             <div class="mb-4">
               <h6 class="fw-semibold text-uppercase small mb-3">Price</h6>
 
@@ -106,14 +106,14 @@
             </div>
 
             <button class="btn btn-dark w-100">
-              Apply Filters
+              Apply Filters 
             </button>
           </aside>
         </div>
 
         <div class="d-md-none mb-3">
           <button class="btn btn-outline-dark w-100" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
-            Filter
+            Open Filter Menu
           </button>
         </div>
 
@@ -167,7 +167,7 @@
             </div>
 
             <button class="btn btn-dark w-100">
-              Apply Filters
+              Apply Filters 
             </button>
 
           </div>
@@ -180,33 +180,9 @@
 
             <div class="row" id="productsContainer">
 
-
-
-
-
             </div>
 
-            <!--
-            <nav aria-label="..." class="d-flex justify-content-center">
-              <ul class="pagination">
-                <li class="page-item" id="previous" value="prev">
-                  <a href="#" class="page-link">Previous</a>
-                </li>
-                <li class="page-item active" id="page1" value="1">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item" id="page2" value="2">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item" id="page3" value="3">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item" id="next" value="next">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-            -->
+
           </div>
         </div>
       </div>
@@ -216,24 +192,44 @@
   <script src="./js/products.js"></script>
 
   <script type="module">
-    // Assuming 'products' is imported or declared above
     const container = document.getElementById('productsContainer');
-    const applyFilterBtn = document.querySelector('#filterOffcanvas .btn-dark');
-  
-    // 1. Shuffle function
+    let filteredProducts = [...products];
+
     function shuffleArray(array) {
       return array.sort(() => Math.random() - 0.5);
     }
-  
-    // 2. The Render Function
-    // This replaces your old .forEach loop so we can call it multiple times
+
+    window.clearAllFilters = function () {
+      document.querySelectorAll('#NomobileFilter input[type="checkbox"]').forEach(input => {
+        input.checked = false;
+      });
+
+      document.querySelectorAll('#filterOffcanvas input[type="checkbox"]').forEach(input => {
+        input.checked = false;
+      });
+
+      filteredProducts = shuffleArray([...products]);
+      renderProducts(filteredProducts);
+    };
+
+    // la mas importante aqui es para mostrar los dato de productos de forma HTML usando js -_- ME
     function renderProducts(productsList) {
-      container.innerHTML = ''; // Clear current view
-  
+      container.innerHTML = '';
+
+      if (productsList.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 text-center py-5">
+            <p class="text-muted">No products found matching your filters.</p>
+            <button class="btn btn-outline-dark" onclick="clearAllFilters()">Clear All Filters</button>
+          </div>
+        `;
+        return;
+      }
+
       productsList.forEach(product => {
         const col = document.createElement('div');
         col.className = 'col-lg-4 col-sm-6 col-12 mb-4 product-card';
-        
+
         col.innerHTML = `
           <div class="card border-0" style="height: 500px; display: flex; flex-direction: column;">
             <div class="position-relative flex-grow-1 overflow-hidden">
@@ -265,58 +261,112 @@
         container.appendChild(col);
       });
     }
-  
-    // 3. The Filter Logic
-    function handleFilters() {
-      // Collect checked values
-      const selectedGenders = Array.from(document.querySelectorAll('#filterOffcanvas input[id$="-mob"]:checked'))
-                                   .filter(i => i.id.includes('men') || i.id.includes('women'))
-                                   .map(i => i.value);
-  
-      const selectedCategories = Array.from(document.querySelectorAll('#filterOffcanvas input[id$="-mob"]:checked'))
-                                       .filter(i => i.id.includes('shoes') || i.id.includes('bags'))
-                                       .map(i => i.value.toLowerCase());
-  
-      const selectedPrices = Array.from(document.querySelectorAll('#filterOffcanvas input[value*="-"], #filterOffcanvas input[value*="+"]:checked'))
-                                  .filter(i => i.checked)
-                                  .map(i => i.value);
-  
-      // Filter the original array
-      const filteredProducts = products.filter(product => {
-        // Check Gender
-        const matchesGender = selectedGenders.length === 0 || selectedGenders.includes(product.wOrm);
-        
-        // Check Category
-        const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category.toLowerCase());
-  
-        // Check Price
-        let matchesPrice = selectedPrices.length === 0;
-        if (selectedPrices.length > 0) {
-          selectedPrices.forEach(range => {
-            if (range === "0-1000" && product.prix <= 1000) matchesPrice = true;
-            if (range === "1000-2000" && product.prix > 1000 && product.prix <= 2000) matchesPrice = true;
-            if (range === "2000+" && product.prix > 2000) matchesPrice = true;
-          });
-        }
-  
-        return matchesGender && matchesCategory && matchesPrice;
-      });
-  
-      // Render the new list
-      renderProducts(filteredProducts);
-  
-      // Close the Bootstrap Offcanvas
-      const offcanvasEl = document.getElementById('filterOffcanvas');
-      const instance = bootstrap.Offcanvas.getInstance(offcanvasEl);
-      if (instance) instance.hide();
+
+    // la funcion que es responsable de obtener los filtros parametro y mostrar los filtros para aplicar -_-
+    function getActiveFilters() {
+      const desktopGenders = Array.from(document.querySelectorAll('#NomobileFilter input[id="men"]:checked, #NomobileFilter input[id="women"]:checked'))
+        .map(input => input.value);
+
+      const desktopCategories = Array.from(document.querySelectorAll('#NomobileFilter input[id="shoes"]:checked, #NomobileFilter input[id="bags"]:checked'))
+        .map(input => input.value.toLowerCase());
+
+      const desktopPrices = Array.from(document.querySelectorAll('#NomobileFilter input[value="0-1000"]:checked, #NomobileFilter input[value="1000-2000"]:checked, #NomobileFilter input[value="2000+"]:checked'))
+        .map(input => input.value);
+
+      const mobileGenders = Array.from(document.querySelectorAll('#filterOffcanvas input[id="men-mob"]:checked, #filterOffcanvas input[id="women-mob"]:checked'))
+        .map(input => input.value);
+
+      const mobileCategories = Array.from(document.querySelectorAll('#filterOffcanvas input[id="shoes-mob"]:checked, #filterOffcanvas input[id="bags-mob"]:checked'))
+        .map(input => input.value.toLowerCase());
+
+      const mobilePrices = Array.from(document.querySelectorAll('#filterOffcanvas input[value="0-1000"]:checked, #filterOffcanvas input[value="1000-2000"]:checked, #filterOffcanvas input[value="2000+"]:checked'))
+        .map(input => input.value);
+
+      let genders = desktopGenders;
+      let categories = desktopCategories;
+      let prices = desktopPrices;
+
+      if (desktopGenders.length === 0 && mobileGenders.length > 0) genders = mobileGenders;
+      if (desktopCategories.length === 0 && mobileCategories.length > 0) categories = mobileCategories;
+      if (desktopPrices.length === 0 && mobilePrices.length > 0) prices = mobilePrices;
+
+      return {
+        genders: genders,
+        categories: categories,
+        prices: prices
+      };
     }
-  
-    // 4. Initialization
-    // Shuffle and show all products on first load
-    renderProducts(shuffleArray([...products]));
-  
-    // Listen for the "Apply Filters" button click
-    applyFilterBtn.addEventListener('click', handleFilters);
+
+    function matchesPrice(productPrice, priceRanges) {
+      if (priceRanges.length === 0) return true;
+
+      return priceRanges.some(range => {
+        if (range === "0-1000") return productPrice <= 1000;
+        if (range === "1000-2000") return productPrice > 1000 && productPrice <= 2000;
+        if (range === "2000+") return productPrice > 2000;
+        return false;
+      });
+    }
+
+    // aqui applicamos los filtros obteniendo desde la function preUltima se llama getActiveFilter
+    function applyFilters() {
+      const filters = getActiveFilters();
+
+      if (filters.genders.length === 0 &&
+        filters.categories.length === 0 &&
+        filters.prices.length === 0) {
+        filteredProducts = shuffleArray([...products]);
+        renderProducts(filteredProducts);
+        return;
+      }
+
+      filteredProducts = products.filter(product => {
+        const matchesGender = filters.genders.length === 0 ||
+          filters.genders.includes(product.wOrm);
+
+        const matchesCategory = filters.categories.length === 0 ||
+          filters.categories.includes(product.category.toLowerCase());
+
+        const matchesPriceFilter = matchesPrice(product.prix, filters.prices);
+
+        return matchesGender && matchesCategory && matchesPriceFilter;
+      });
+
+      renderProducts(filteredProducts);
+    }
+
+ 
+    function handleDesktopFilter() {
+      applyFilters();
+    }
+
+   
+    function handleMobileFilter() {
+      applyFilters();
+
+    
+      const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('filterOffcanvas'));
+      if (offcanvas) offcanvas.hide();
+    }
+
+    // aqui usamos el addEventos para que los botóns van a trabajar
+    document.addEventListener('DOMContentLoaded', function () {
+    
+      const desktopApplyBtn = document.querySelector('#NomobileFilter .btn-dark');
+      if (desktopApplyBtn) {
+        desktopApplyBtn.addEventListener('click', handleDesktopFilter);
+      }
+
+      
+      const mobileApplyBtn = document.querySelector('#filterOffcanvas .btn-dark');
+      if (mobileApplyBtn) {
+        mobileApplyBtn.addEventListener('click', handleMobileFilter);
+      }
+    });
+
+   
+    filteredProducts = shuffleArray([...products]);
+    renderProducts(filteredProducts);
   </script>
 
 </body>
