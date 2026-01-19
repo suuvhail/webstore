@@ -1,550 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page | Shop</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page | Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
-  <body>
-    <header class="bg-primary" style="height: 100px">
-      <!-- TOP BAR -->
-      <div class="bg-dark text-white py-2 small">
-        <div
-          class="container d-flex justify-content-between align-items-center"
-        >
-          <div>Call: <span class="fw-semibold">+1 078 2376</span></div>
-          <div class="d-none d-md-block">
-            New year sale <span class="text-warning fw-semibold">-30% off</span>
-          </div>
-          <div class="d-flex align-items-center gap-2">
-            <i class="bi bi-person"></i>
-            <a
-              href="Login.html"
-              class="text-white text-decoration-none fw-semibold"
-            >
-              Login
-            </a>
-          </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+
+  <style>
+    @media (max-width: 767px) {
+      #NomobileFilter {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="#">BISUM</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto gap-lg-3 text-uppercase small">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+
+        <div class="d-flex gap-3 fs-5">
+          <i class="bi bi-heart"></i>
+          <i class="bi bi-bag"></i>
         </div>
       </div>
+    </div>
+  </nav>
 
-      <!-- MAIN NAVBAR -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-        <div class="container">
-          <!-- LOGO -->
-          <a class="navbar-brand fw-bold fs-3" href="Home.html">Bisum</a>
 
-          <!-- LINKS -->
-          <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-3">
-              <li class="nav-item">
-                <a class="nav-link fw-semibold" href="Home.html">Home</a>
-              </li>
+  <section>
+    <div class="container mt-5">
+      <h1 class="text-center mb-5">shop</h1>
+      <div class="row">
+        <div class="col-md-3 mb-5" id="NomobileFilter">
+          <aside class="border-end pe-4">
 
-              <li class="nav-item">
-                <a
-                  class="nav-link active text-danger fw-semibold"
-                  href="Shop.html"
-                  >Shop</a
-                >
-              </li>
+            <!-- FILTER TITLE -->
+            <h5 class="text-uppercase fw-bold mb-4">Filter</h5>
 
-              <li class="nav-item">
-                <a class="nav-link fw-semibold" href="#">Blog</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link fw-semibold" href="Page.html">Pages</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link fw-semibold" href="Contact.html">Contact</a>
-              </li>
-            </ul>
-            <!-- ICONS -->
-            <div class="d-flex align-items-center gap-3 justify-content-end">
-              <a href="#" class="text-dark">
-                <i class="bi bi-heart"></i>
-              </a>
-              <a href="#" class="text-dark">
-                <i class="bi bi-bag"></i>
-              </a>
+            <!-- GENDER FILTER -->
+            <div class="mb-4">
+              <h6 class="fw-semibold text-uppercase small mb-3">Gender</h6>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="men" value="M">
+                <label class="form-check-label" for="men">Men</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="women" value="W">
+                <label class="form-check-label" for="women">Women</label>
+              </div>
             </div>
-          </div>
 
-          <!-- TOGGLER -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar"
-          >
-            <span class="navbar-toggler-icon"></span>
+            <!-- CATEGORY FILTER -->
+            <div class="mb-4">
+              <h6 class="fw-semibold text-uppercase small mb-3">Category</h6>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="shoes" value="Shoes">
+                <label class="form-check-label" for="shoes">Shoes</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="bags" value="bags">
+                <label class="form-check-label" for="bags">Bags</label>
+              </div>
+            </div>
+
+            <!-- PRICE FILTER -->
+            <div class="mb-4">
+              <h6 class="fw-semibold text-uppercase small mb-3">Price</h6>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="0-1000" id="price1">
+                <label class="form-check-label" for="price1">Under 1000</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1000-2000" id="price2">
+                <label class="form-check-label" for="price2">1000 – 2000</label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="2000+" id="price3">
+                <label class="form-check-label" for="price3">Above 2000</label>
+              </div>
+            </div>
+
+            <button class="btn btn-dark w-100">
+              Apply Filters
+            </button>
+          </aside>
+        </div>
+
+        <div class="d-md-none mb-3">
+          <button class="btn btn-outline-dark w-100" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas">
+            Filter
           </button>
         </div>
-      </nav>
-    </header>
 
-    <section>
-      <div class="container mt-5">
-        <h1>shop</h1>
-        <div class="row">
-          <div class="col-md-4">
-            <ul>
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
-              <li></li>
-            </ul>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="filterOffcanvas">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-uppercase">Filter</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
           </div>
-          <div class="col-md-8">
-            <div class="container">
-              <div class="row" id="Shop1">
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/21.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
 
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/21.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
+          <div class="offcanvas-body">
 
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/21.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/21.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/21.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/21.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
+            <div class="mb-4">
+              <h6 class="text-uppercase small fw-semibold mb-3">Gender</h6>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="M" id="men-mob">
+                <label class="form-check-label" for="men-mob">Men</label>
               </div>
-              <div class="row d-none" id="Shop2">
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/22.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/22.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/22.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/22.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/22.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/22.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="W" id="women-mob">
+                <label class="form-check-label" for="women-mob">Women</label>
               </div>
-              <div class="row d-none" id="Shop3">
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/23.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/23.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/23.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/23.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/23.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-3">
-                  <div class="card">
-                    <img
-                      src="./images/collection/23.jpg"
-                      class="card-img-top"
-                      alt="..."
-                    />
-                    <div class="card-header">text title</div>
-                    <p class="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-
-                    <div class="card-body">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <nav aria-label="..." class="d-flex justify-content-center">
-                <ul class="pagination">
-                  <li class="page-item" id="previous" value="prev">
-                    <a href="#" class="page-link">Previous</a>
-                  </li>
-                  <li class="page-item active" id="page1" value="1">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item" id="page2" value="2">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item" id="page3" value="3">
-                    <a class="page-link" href="#">3</a>
-                  </li>
-                  <li class="page-item" id="next" value="next">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-              </nav>
             </div>
+
+            <div class="mb-4">
+              <h6 class="text-uppercase small fw-semibold mb-3">Category</h6>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Shoes" id="shoes-mob">
+                <label class="form-check-label" for="shoes-mob">Shoes</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="bags" id="bags-mob">
+                <label class="form-check-label" for="bags-mob">Bags</label>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h6 class="text-uppercase small fw-semibold mb-3">Price</h6>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="0-1000">
+                <label class="form-check-label">Under 1000</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1000-2000">
+                <label class="form-check-label">1000 – 2000</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="2000+">
+                <label class="form-check-label">Above 2000</label>
+              </div>
+            </div>
+
+            <button class="btn btn-dark w-100">
+              Apply Filters
+            </button>
+
+          </div>
+        </div>
+
+
+        <div class="col-md-9">
+          <div class="container">
+
+
+            <div class="row">
+
+
+
+              <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 product-card" data-gender="M" data-category="Shoes"
+                data-price="1090">
+
+                <div class="card border-0 position-relative overflow-hidden">
+
+                  <!-- TOP RIGHT ICONS -->
+                  <div class="position-absolute top-0 end-0 p-2 d-flex gap-2 z-1">
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-bag"></i>
+                    </button>
+                  </div>
+
+                  <!-- PRODUCT VIDEO -->
+                  <video class="w-100" muted loop playsinline>
+                    <source src="./Media/Products/m/Shoes/pro1-vid.mp4" type="video/mp4">
+                  </video>
+
+                  <!-- HOVER OVERLAY (hidden by default, shown on hover via CSS later) -->
+                  <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-white text-center">
+
+                    <h6 class="mb-1 text-uppercase small">
+                      Men's loafer with Horsebit
+                    </h6>
+
+                    <p class="mb-2 fw-semibold">
+                      1090 €
+                    </p>
+
+                    <a href="#" class="btn btn-outline-dark btn-sm">
+                      View
+                    </a>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 product-card" data-gender="M" data-category="Shoes"
+                data-price="1090">
+
+                <div class="card border-0 position-relative overflow-hidden">
+
+                  <!-- TOP RIGHT ICONS -->
+                  <div class="position-absolute top-0 end-0 p-2 d-flex gap-2 z-1">
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-bag"></i>
+                    </button>
+                  </div>
+
+                  <!-- PRODUCT VIDEO -->
+                  <video class="w-100" muted loop playsinline>
+                    <source src="./Media/Products/m/Shoes/pro1-vid.mp4" type="video/mp4">
+                  </video>
+
+                  <!-- HOVER OVERLAY (hidden by default, shown on hover via CSS later) -->
+                  <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-white text-center">
+
+                    <h6 class="mb-1 text-uppercase small">
+                      Men's loafer with Horsebit
+                    </h6>
+
+                    <p class="mb-2 fw-semibold">
+                      1090 €
+                    </p>
+
+                    <a href="#" class="btn btn-outline-dark btn-sm">
+                      View
+                    </a>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 product-card" data-gender="M" data-category="Shoes"
+                data-price="1090">
+
+                <div class="card border-0 position-relative overflow-hidden">
+
+                  <!-- TOP RIGHT ICONS -->
+                  <div class="position-absolute top-0 end-0 p-2 d-flex gap-2 z-1">
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-bag"></i>
+                    </button>
+                  </div>
+
+                  <!-- PRODUCT VIDEO -->
+                  <video class="w-100" muted loop playsinline>
+                    <source src="./Media/Products/m/Shoes/pro1-vid.mp4" type="video/mp4">
+                  </video>
+
+                  <!-- HOVER OVERLAY (hidden by default, shown on hover via CSS later) -->
+                  <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-white text-center">
+
+                    <h6 class="mb-1 text-uppercase small">
+                      Men's loafer with Horsebit
+                    </h6>
+
+                    <p class="mb-2 fw-semibold">
+                      1090 €
+                    </p>
+
+                    <a href="#" class="btn btn-outline-dark btn-sm">
+                      View
+                    </a>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 product-card" data-gender="M" data-category="Shoes"
+                data-price="1090">
+
+                <div class="card border-0 position-relative overflow-hidden">
+
+                  <!-- TOP RIGHT ICONS -->
+                  <div class="position-absolute top-0 end-0 p-2 d-flex gap-2 z-1">
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="btn btn-light btn-sm">
+                      <i class="bi bi-bag"></i>
+                    </button>
+                  </div>
+
+                  <!-- PRODUCT VIDEO -->
+                  <video class="w-100" muted loop playsinline>
+                    <source src="./Media/Products/m/Shoes/pro1-vid.mp4" type="video/mp4">
+                  </video>
+
+                  <!-- HOVER OVERLAY (hidden by default, shown on hover via CSS later) -->
+                  <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-white text-center">
+
+                    <h6 class="mb-1 text-uppercase small">
+                      Men's loafer with Horsebit
+                    </h6>
+
+                    <p class="mb-2 fw-semibold">
+                      1090 €
+                    </p>
+
+                    <a href="#" class="btn btn-outline-dark btn-sm">
+                      View
+                    </a>
+
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!--
+            <nav aria-label="..." class="d-flex justify-content-center">
+              <ul class="pagination">
+                <li class="page-item" id="previous" value="prev">
+                  <a href="#" class="page-link">Previous</a>
+                </li>
+                <li class="page-item active" id="page1" value="1">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item" id="page2" value="2">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item" id="page3" value="3">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item" id="next" value="next">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+            -->
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <script>
-      const shops = [
-        document.getElementById("Shop1"),
-        document.getElementById("Shop2"),
-        document.getElementById("Shop3"),
-      ];
 
-      const pages = document.querySelectorAll(
-        ".page-item[value='1'], .page-item[value='2'], .page-item[value='3']"
-      );
-      const prev = document.getElementById("previous");
-      const next = document.getElementById("next");
+</body>
 
-      let currentPage = 1;
-      const totalPages = shops.length;
-
-      function showPage(pageNumber) {
-        // hide all shops
-        shops.forEach((shop) => shop.classList.add("d-none"));
-
-        // show selected shop
-        shops[pageNumber - 1].classList.remove("d-none");
-
-        // update active pagination button
-        pages.forEach((p) => p.classList.remove("active"));
-        document
-          .querySelector(`.page-item[value="${pageNumber}"]`)
-          .classList.add("active");
-
-        currentPage = pageNumber;
-      }
-
-      // Page numbers click
-      pages.forEach((page) => {
-        page.addEventListener("click", function (e) {
-          e.preventDefault();
-          const pageNumber = Number(this.getAttribute("value"));
-          showPage(pageNumber);
-        });
-      });
-
-      // Previous button
-      prev.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (currentPage > 1) {
-          showPage(currentPage - 1);
-        }
-      });
-
-      // Next button
-      next.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (currentPage < totalPages) {
-          showPage(currentPage + 1);
-        }
-      });
-    </script>
-  </body>
 </html>

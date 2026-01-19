@@ -31,42 +31,111 @@ const Man_Products = [
     wOrm: "M",
     category: "Shoes",
 
+},
+{
+    id: 4,
+    title: "Lunetta small crossbody bag",
+    prix:  1280,
+    Description: "Introducing Spring Summer 2026. Lunetta, or little moon in Italian, is defined by a crescent shape, and its unisex attitude is featured in the archetypes 'Nerd' and 'La Bomba'. This style is crafted in structured yet lightweight GG canvas, and can be carried crossbody with the detachable strap, or over the shoulder.",
+    mainVideo: "Media/Products/m/Handbags/mbag-vd1.mp4",
+    images: ["Media/Products/m/Handbags/mbag-im1.avif","Media/Products/m/Handbags/mbag-im2.jpg","Media/Products/m/Handbags/mbag-im3.avif" ],
+    wOrm: "M",
+    category: "bags",
+
+},
+{
+    id: 5,
+    title: "Ophidia small belt bag",
+    prix: 1450 ,
+    Description: "The Ophidia collection evokes the House's heritage with the signature Web stripe and Double G emblem in light gold-toned finish. The styles are crafted from soft GG Monogram coated fabric, featuring green cotton lining inside.",
+    mainVideo: "Media/Products/m/Handbags/mbag-2-vd.mp4",
+    images: ["Media/Products/m/Handbags/mbag2-im1.webp","Media/Products/m/Handbags/mbag2-im2.png","Media/Products/m/Handbags/mbag2-im3.webp" ],
+    wOrm: "M",
+    category: "bags",
+
+},
+{
+    id: 6,
+    title: "Ophidia medium backpack",
+    prix: 2550 ,
+    Description: "The Ophidia collection evokes the House’s heritage with the signature Web stripe and Double G emblem in light gold-toned finish. The styles are crafted from soft GG Monogram coated fabric, featuring green cotton lining inside.",
+    mainVideo: "Media/Products/m/Handbags/mbag3-vd.mp4",
+    images: ["Media/Products/m/Handbags/mbag3-im1.webp","Media/Products/m/Handbags/mbag3-im2.png","Media/Products/m/Handbags/mbag3-im3.avif" ],
+    wOrm: "M",
+    category: "bags",
+
 }
+
+
+
 
 ];
 
 const Women_Products = [
     {
-        id: 1,
+        id: 7,
         title: "Women's Bombshell boot",
         prix: 2300 ,
         Description: "Introducing Spring Summer 2026. This style pays tribute to a glamorous era. Defined by a point toe and stiletto heel in gold‑toned finish, it is crafted from lightweight yet structured GG canvas in the vintage-inspired shade of sand.",
         mainVideo: "Media/Products/wo/Shoes/Ws1-vid.mp4",
         images: ["Media/Products/wo/Shoes/Ws1-im1.avif","Media/Products/wo/Shoes/Ws1-im2.avif","Media/Products/wo/Shoes/Ws1-im3.avif" ],
         wOrm: "W",
-        category: "women-Shoes",
+        category: "Shoes",
     
     },
     {
-        id: 2,
+        id: 8,
         title: "Women's Stretch low-top sneaker",
         prix: 980 ,
         Description: "Introducing Spring Summer 2026. This new design reimagines the House's signature sneaker in a light, soft and flexible silhouette for the La Famiglia collection. Crafted from soft stretchy leather, the style has been treated by hand to achieve a worn-out appearance which makes every pair unique.",
         mainVideo: "Media/Products/wo/Shoes/Ws2-vid.mp4",
         images: ["Media/Products/wo/Shoes/Ws2-im1.avif","Media/Products/wo/Shoes/Ws2-im2.avif","Media/Products/wo/Shoes/Ws2-im3.avif" ],
         wOrm: "W",
-        category: "women-Shoes",
+        category: "Shoes",
     },
     {
-        id: 3,
+        id: 9,
         title: "Women's slingback pump with crystal Horsebit",
         prix: 1200 ,
         Description: "This shoe features multi-dimensional crystals as a special feature on the classic silhouette. The emblematic Horsebit adds a touch of timeless elegance, highlighting the brand's heritage. Carefully crafted, this design effortlessly combines luxury and bold style, making it a true statement piece.",
         mainVideo: "Media/Products/wo/Shoes/Ws3-vid.mp4",
         images: ["Media/Products/wo/Shoes/Ws3-im1.webp","Media/Products/wo/Shoes/Ws3-im2.png","Media/Products/wo/Shoes/Ws3-im3.webp" ],
         wOrm: "W",
-        category: "women-Shoes",
+        category: "Shoes",
+    },
+    {
+    id: 10,
+    title: "Jackie Slim small shoulder bag",
+    prix:  2200,
+    Description: "Introducing Spring Summer 2026. This new Jackie Slim is featured in the 'La V.I.P'. look of La Famiglia. The sleek, relaxed style is crafted from lightweight yet structured GG canvas in a vintage-inspired shade of sand, complete with an easy-to-use piston closure in gold-toned finish.",
+    mainVideo: "Media/Products/wo/Handbags/wbag1-vd.mp4",
+    images: ["Media/Products/wo/Handbags/wbag1-im1.avif","Media/Products/wo/Handbags/wbag1-im2.avif","Media/Products/wo/Handbags/wbag1-im3.avif" ],
+    wOrm: "W",
+    category: "bags",
+    },
+    {
+        id: 11,
+        title: "Gucci Mercato small tote bag",
+        prix: 2800 ,
+        Description: "Introducing Spring Summer 2026.The Gucci Mercato new tote design is inspired by a spacious shopper and Italian markets. It can be worn with the sides either cinched or open, while featuring an easy-to-use piston closure. Crafted from lightweight yet structured GG canvas in the vintage-inspired shade of sand, the style reveals a new lining with Diamante motif taken from the archive.",
+        mainVideo: "Media/Products/wo/Handbags/wbag2-vd.mp4",
+        images: ["Media/Products/wo/Handbags/wbag2-im1.avif","Media/Products/wo/Handbags/wbag2-im2.avif","Media/Products/wo/Handbags/wbag2-im3.avif" ],
+        wOrm: "W",
+        category: "bags",
+    
+    },
+    {
+        id: 12,
+        title: "Gucci Borsetto large boston bag",
+        prix:  3100,
+        Description: "Introducing Spring Summer 2026. Gucci Borsetto is a wordplay that merges 'borsa' (bag in Italian) and 'morsetto' (Horsebit). The style is crafted from lightweight yet structured GG canvas in the vintage-inspired shade of sand, and reveals a new lining with Diamante motif taken from the archive.",
+        mainVideo: "Media/Products/wo/Handbags/wbag3-vd.mp4",
+        images: ["Media/Products/wo/Handbags/wbag3-im1.webp","Media/Products/wo/Handbags/wbag3-im2.jpg","Media/Products/wo/Handbags/wbag3-im3.webp" ],
+        wOrm: "W",
+        category: "bags",
+    
     }
+
     
 
 ]
