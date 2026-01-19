@@ -40,13 +40,40 @@
           <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
         </ul>
 
-        <div class="d-flex gap-3 fs-5">
+        <div class="d-flex gap-3 fs-5 position-relative">
           <i class="bi bi-heart"></i>
-          <i class="bi bi-bag"></i>
+          <div class="position-relative">
+            <i class="bi bi-bag" style="cursor: pointer;" 
+               data-bs-toggle="offcanvas" 
+               data-bs-target="#cartOffcanvas"></i>
+            <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
+                  style="display: none; font-size: 0.6rem; padding: 2px 5px;">0</span>
+          </div>
         </div>
       </div>
     </div>
   </nav>
+
+  <!-- La cartolina OFFCANVAS para la derecha -->
+   
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title text-uppercase fw-bold" id="cartOffcanvasLabel">Your Bag</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div id="cartItemsContainer">
+        <p class="text-muted text-center mt-5">Your bag is empty.</p>
+      </div>
+    </div>
+    <div class="offcanvas-footer p-3 border-top">
+      <div class="d-flex justify-content-between mb-3">
+        <span class="fw-bold">Total:</span>
+        <span id="cartTotal">0 €</span>
+      </div>
+      <button class="btn btn-dark w-100 text-uppercase">Checkout</button>
+    </div>
+  </div>
 
 
   <section>
@@ -191,182 +218,8 @@
 
   <script src="./js/products.js"></script>
 
-  <script type="module">
-    const container = document.getElementById('productsContainer');
-    let filteredProducts = [...products];
-
-    function shuffleArray(array) {
-      return array.sort(() => Math.random() - 0.5);
-    }
-
-    window.clearAllFilters = function () {
-      document.querySelectorAll('#NomobileFilter input[type="checkbox"]').forEach(input => {
-        input.checked = false;
-      });
-
-      document.querySelectorAll('#filterOffcanvas input[type="checkbox"]').forEach(input => {
-        input.checked = false;
-      });
-
-      filteredProducts = shuffleArray([...products]);
-      renderProducts(filteredProducts);
-    };
-
-    // la mas importante aqui es para mostrar los dato de productos de forma HTML usando js -_- ME
-    function renderProducts(productsList) {
-      container.innerHTML = '';
-
-      if (productsList.length === 0) {
-        container.innerHTML = `
-          <div class="col-12 text-center py-5">
-            <p class="text-muted">No products found matching your filters.</p>
-            <button class="btn btn-outline-dark" onclick="clearAllFilters()">Clear All Filters</button>
-          </div>
-        `;
-        return;
-      }
-
-      productsList.forEach(product => {
-        const col = document.createElement('div');
-        col.className = 'col-lg-4 col-sm-6 col-12 mb-4 product-card';
-
-        col.innerHTML = `
-          <div class="card border-0" style="height: 500px; display: flex; flex-direction: column;">
-            <div class="position-relative flex-grow-1 overflow-hidden">
-              <div class="position-absolute top-0 end-0 p-2 d-flex gap-2 z-1">
-                <button class="btn btn-light btn-sm shadow-sm"><i class="bi bi-heart"></i></button>
-                <button class="btn btn-light btn-sm shadow-sm"><i class="bi bi-bag"></i></button>
-              </div>
-              <div style="
-                background-image: url('${product.images[0]}');
-                background-size: cover;
-                background-position: center;
-                width: 100%;
-                height: 100%;
-              "></div>
-            </div>
-            <div class="text-center py-3 bg-white">
-              <h6 class="mb-1 text-uppercase small" style="
-                white-space: nowrap; 
-                overflow: hidden; 
-                text-overflow: ellipsis; 
-                display: block;
-                padding: 0 10px;
-              ">${product.title}</h6>
-              <p class="mb-2 fw-semibold">${product.prix} €</p>
-              <a href="#" class="btn btn-outline-dark btn-sm">View</a>
-            </div>
-          </div>
-        `;
-        container.appendChild(col);
-      });
-    }
-
-    // la funcion que es responsable de obtener los filtros parametro y mostrar los filtros para aplicar -_-
-    function getActiveFilters() {
-      const desktopGenders = Array.from(document.querySelectorAll('#NomobileFilter input[id="men"]:checked, #NomobileFilter input[id="women"]:checked'))
-        .map(input => input.value);
-
-      const desktopCategories = Array.from(document.querySelectorAll('#NomobileFilter input[id="shoes"]:checked, #NomobileFilter input[id="bags"]:checked'))
-        .map(input => input.value.toLowerCase());
-
-      const desktopPrices = Array.from(document.querySelectorAll('#NomobileFilter input[value="0-1000"]:checked, #NomobileFilter input[value="1000-2000"]:checked, #NomobileFilter input[value="2000+"]:checked'))
-        .map(input => input.value);
-
-      const mobileGenders = Array.from(document.querySelectorAll('#filterOffcanvas input[id="men-mob"]:checked, #filterOffcanvas input[id="women-mob"]:checked'))
-        .map(input => input.value);
-
-      const mobileCategories = Array.from(document.querySelectorAll('#filterOffcanvas input[id="shoes-mob"]:checked, #filterOffcanvas input[id="bags-mob"]:checked'))
-        .map(input => input.value.toLowerCase());
-
-      const mobilePrices = Array.from(document.querySelectorAll('#filterOffcanvas input[value="0-1000"]:checked, #filterOffcanvas input[value="1000-2000"]:checked, #filterOffcanvas input[value="2000+"]:checked'))
-        .map(input => input.value);
-
-      let genders = desktopGenders;
-      let categories = desktopCategories;
-      let prices = desktopPrices;
-
-      if (desktopGenders.length === 0 && mobileGenders.length > 0) genders = mobileGenders;
-      if (desktopCategories.length === 0 && mobileCategories.length > 0) categories = mobileCategories;
-      if (desktopPrices.length === 0 && mobilePrices.length > 0) prices = mobilePrices;
-
-      return {
-        genders: genders,
-        categories: categories,
-        prices: prices
-      };
-    }
-
-    function matchesPrice(productPrice, priceRanges) {
-      if (priceRanges.length === 0) return true;
-
-      return priceRanges.some(range => {
-        if (range === "0-1000") return productPrice <= 1000;
-        if (range === "1000-2000") return productPrice > 1000 && productPrice <= 2000;
-        if (range === "2000+") return productPrice > 2000;
-        return false;
-      });
-    }
-
-    // aqui applicamos los filtros obteniendo desde la function preUltima se llama getActiveFilter
-    function applyFilters() {
-      const filters = getActiveFilters();
-
-      if (filters.genders.length === 0 &&
-        filters.categories.length === 0 &&
-        filters.prices.length === 0) {
-        filteredProducts = shuffleArray([...products]);
-        renderProducts(filteredProducts);
-        return;
-      }
-
-      filteredProducts = products.filter(product => {
-        const matchesGender = filters.genders.length === 0 ||
-          filters.genders.includes(product.wOrm);
-
-        const matchesCategory = filters.categories.length === 0 ||
-          filters.categories.includes(product.category.toLowerCase());
-
-        const matchesPriceFilter = matchesPrice(product.prix, filters.prices);
-
-        return matchesGender && matchesCategory && matchesPriceFilter;
-      });
-
-      renderProducts(filteredProducts);
-    }
-
- 
-    function handleDesktopFilter() {
-      applyFilters();
-    }
-
-   
-    function handleMobileFilter() {
-      applyFilters();
-
+  <script type="module" src="./js/shop.js">
     
-      const offcanvas = bootstrap.Offcanvas.getInstance(document.getElementById('filterOffcanvas'));
-      if (offcanvas) offcanvas.hide();
-    }
-
-    // aqui usamos el addEventos para que los botóns van a trabajar
-    document.addEventListener('DOMContentLoaded', function () {
-    
-      const desktopApplyBtn = document.querySelector('#NomobileFilter .btn-dark');
-      if (desktopApplyBtn) {
-        desktopApplyBtn.addEventListener('click', handleDesktopFilter);
-      }
-
-      
-      const mobileApplyBtn = document.querySelector('#filterOffcanvas .btn-dark');
-      if (mobileApplyBtn) {
-        mobileApplyBtn.addEventListener('click', handleMobileFilter);
-      }
-    });
-
-   
-    filteredProducts = shuffleArray([...products]);
-    renderProducts(filteredProducts);
   </script>
 
 </body>
