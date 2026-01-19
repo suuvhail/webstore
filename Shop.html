@@ -24,38 +24,34 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+  <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container">
-      <a class="navbar-brand fw-bold fs-3" href="#">BISUM</a>
-
+      <a class="navbar-brand fw-bold fs-3" href="./homepage.html">GUCCI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav mx-auto gap-lg-3 text-uppercase small">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="./homepage.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="./Shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
         </ul>
-
-        <div class="d-flex gap-3 fs-5 position-relative">
+        <div class="d-flex gap-3 fs-5  position-relative">
           <i class="bi bi-heart"></i>
           <div class="position-relative">
-            <i class="bi bi-bag" style="cursor: pointer;" 
-               data-bs-toggle="offcanvas" 
-               data-bs-target="#cartOffcanvas"></i>
-            <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
-                  style="display: none; font-size: 0.6rem; padding: 2px 5px;">0</span>
+            <i class="bi bi-bag" style="cursor: pointer;" data-bs-toggle="offcanvas"
+              data-bs-target="#cartOffcanvas"></i>
+            <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              style="display: none; font-size: 0.6rem; padding: 2px 5px;">0</span>
           </div>
+
         </div>
       </div>
     </div>
   </nav>
 
   <!-- La cartolina OFFCANVAS para la derecha -->
-   
+
   <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
     <div class="offcanvas-header border-bottom">
       <h5 class="offcanvas-title text-uppercase fw-bold" id="cartOffcanvasLabel">Your Bag</h5>
@@ -83,10 +79,10 @@
         <div class="col-md-3 mb-5" id="NomobileFilter">
           <aside class="border-end pe-4">
 
-           
+
             <h5 class="text-uppercase fw-bold mb-4">Filter</h5>
 
-          
+
             <div class="mb-4">
               <h6 class="fw-semibold text-uppercase small mb-3">Gender</h6>
               <div class="form-check">
@@ -99,7 +95,7 @@
               </div>
             </div>
 
-          
+
             <div class="mb-4">
               <h6 class="fw-semibold text-uppercase small mb-3">Category</h6>
               <div class="form-check">
@@ -112,7 +108,7 @@
               </div>
             </div>
 
-           
+
             <div class="mb-4">
               <h6 class="fw-semibold text-uppercase small mb-3">Price</h6>
 
@@ -133,7 +129,7 @@
             </div>
 
             <button class="btn btn-dark w-100">
-              Apply Filters 
+              Apply Filters
             </button>
           </aside>
         </div>
@@ -194,7 +190,7 @@
             </div>
 
             <button class="btn btn-dark w-100">
-              Apply Filters 
+              Apply Filters
             </button>
 
           </div>
@@ -219,7 +215,7 @@
   <script src="./js/products.js"></script>
 
   <script type="module" src="./js/shop.js">
-    
+
   </script>
 
 </body>

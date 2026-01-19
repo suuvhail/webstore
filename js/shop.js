@@ -236,7 +236,7 @@ function renderProducts(productsList) {
                     padding: 0 10px;
                 ">${product.title}</h6>
                 <p class="mb-2 fw-semibold">${product.prix} €</p>
-                <a href="#" class="btn btn-outline-dark btn-sm">View</a>
+                <a href="product-view.html?id=${product.id}" class="btn btn-outline-dark btn-sm">View</a>
                 </div>
             </div>
         `;

@@ -3,6 +3,7 @@ body {
   color: #000;
   background: #fff;
 }
+
 .gucci-contact {
   padding-top: 80px;
 }
@@ -45,6 +46,7 @@ body {
   line-height: 1.8;
   margin-bottom: 35px;
 }
+
 .gucci-form {
   padding-top: 80px;
 }
@@ -118,33 +120,37 @@ body {
   color: #000;
   text-decoration: underline;
 }
+
 /* Fade + slide animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Left section animation */
+
 .gucci-contact {
   animation: fadeUp 0.8s ease forwards;
 }
 
-/* Right form animation (slight delay) */
+
 .gucci-form {
   animation: fadeUp 0.8s ease forwards;
   animation-delay: 0.2s;
   opacity: 0;
 }
+
 .gucci-input,
 .gucci-textarea {
   transition: all 0.3s ease;
 }
+
 .gucci-icon {
   transition: transform 0.3s ease;
 }
@@ -152,10 +158,44 @@ body {
 .gucci-info p:hover .gucci-icon {
   transform: scale(1.2);
 }
+
 .gucci-block {
   transition: all 0.3s ease;
 }
 
 .gucci-block:hover {
   transform: translateY(-6px);
+}
+
+/* Cart Offcanvas Styles */
+#cartOffcanvas {
+  width: 400px !important;
+}
+
+@media (max-width: 768px) {
+  #cartOffcanvas {
+    width: 100% !important;
+  }
+}
+
+.cart-count {
+  animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.navbar-custom.scrolled .cart-count {
+  background-color: var(--gucci-red) !important;
 }
