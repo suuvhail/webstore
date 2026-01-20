@@ -1,538 +1,607 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxury Hero | Gucci Inspired</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
 
+      #cartOffcanvas {
+        width: 400px !important;
+      }
 
-
-        /* Cart Offcanvas Styles */
+      @media (max-width: 768px) {
         #cartOffcanvas {
-            width: 400px !important;
+          width: 100% !important;
+        }
+      }
+
+      .cart-count {
+        animation: pulse 0.3s ease-in-out;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
         }
 
-        @media (max-width: 768px) {
-            #cartOffcanvas {
-                width: 100% !important;
-            }
+        50% {
+          transform: scale(1.2);
         }
 
-        .cart-count {
-            animation: pulse 0.3s ease-in-out;
+        100% {
+          transform: scale(1);
         }
+      }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
+      .navbar-custom.scrolled .cart-count {
+        background-color: var(--gucci-red) !important;
+      }
 
-            50% {
-                transform: scale(1.2);
-            }
+      .navbar-custom {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: transparent;
+        transition: all 0.4s ease;
+        z-index: 1000;
+        padding: 20px 0;
+      }
 
-            100% {
-                transform: scale(1);
-            }
-        }
+      .navbar-custom.scrolled {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        padding: 10px 0;
+      }
 
-        .navbar-custom.scrolled .cart-count {
-            background-color: var(--gucci-red) !important;
-        }
+      .navbar-brand,
+      .nav-link,
+      .navbar i {
+        color: white !important;
+        transition: color 0.4s ease;
+      }
 
-        /* [STYLE: NAVIGATION] - Transparent to White transition */
-        .navbar-custom {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: transparent;
-            transition: all 0.4s ease;
-            z-index: 1000;
-            padding: 20px 0;
-        }
+      .navbar-custom.scrolled .navbar-brand,
+      .navbar-custom.scrolled .nav-link,
+      .navbar-custom.scrolled i {
+        color: black !important;
+      }
 
-        .navbar-custom.scrolled {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            padding: 10px 0;
-        }
+      .navbar-toggler {
+        border: none;
+      }
 
-        .navbar-brand,
-        .nav-link,
-        .navbar i {
-            color: white !important;
-            transition: color 0.4s ease;
-        }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
 
-        .navbar-custom.scrolled .navbar-brand,
-        .navbar-custom.scrolled .nav-link,
-        .navbar-custom.scrolled i {
-            color: black !important;
-        }
+      .navbar-custom.scrolled .navbar-toggler-icon {
+        filter: invert(0);
+      }
 
-        .navbar-toggler {
-            border: none;
-        }
+      .hero {
+        position: relative;
+        background-image: url("./Media/Homepage/bg.jpg");
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 80px;
+        overflow: hidden;
+      }
 
-        .navbar-toggler-icon {
-            filter: invert(1);
-        }
+      .hero-content {
+        width: 300px;
+        text-align: center;
+        color: white;
+        z-index: 2;
+      }
 
-        .navbar-custom.scrolled .navbar-toggler-icon {
-            filter: invert(0);
-        }
+      .hero-button {
+        height: 50px;
+        width: 120px;
+        transition: all 0.3s ease;
+        background-color: white;
+        border: none;
+        border-radius: 0;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
 
-        /* [STYLE: HERO] - Fixed height for PC (face focus) vs Full for Mobile */
+      .hero-button:hover {
+        transform: scale(0.9);
+        background-color: #f8f8f8;
+      }
+
+      .category-card {
+        text-decoration: none;
+        color: #000;
+        display: block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .category-card:hover {
+        transform: scale(0.96);
+      }
+
+      .category-img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+      }
+
+      .hero-card {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        height: 600px;
+      }
+
+      .men-bg {
+        background-image: url("./Media/Homepage/New_Me.jpg");
+      }
+
+      .women-bg {
+        background-image: url("./Media/Homepage/New_Wo.jpg");
+      }
+
+      .service-media-wrapper {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+
+        overflow: hidden;
+        background-color: #000;
+      }
+
+      .service-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .service-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      .service-text {
+        font-size: 0.85rem;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        padding: 0 10px;
+        min-height: 80px;
+      }
+
+      .service-link {
+        font-size: 0.8rem;
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: opacity 0.3s ease;
+      }
+
+      .service-link:hover {
+        color: #666;
+        opacity: 0.8;
+      }
+
+      .bg-black {
+        background-color: #000 !important;
+      }
+
+      .reveal-text {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+
+      .reveal-text.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .rotate-icon {
+        transition: transform 0.4s ease;
+        display: inline-block;
+        margin-right: 8px;
+      }
+
+      .subscribe-trigger:hover .rotate-icon {
+        transform: rotate(90deg);
+      }
+
+      .offcanvas-backdrop.show {
+        opacity: 0.9;
+
+        background-color: #000;
+      }
+
+      .no-focus-outline:focus {
+        box-shadow: none !important;
+        border-color: #000 !important;
+      }
+
+      @media (min-width: 768px) {
         .hero {
-            position: relative;
-            background-image: url("./Media/Homepage/bg.jpg");
-            background-size: cover;
-            background-position: top center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 80px;
-            overflow: hidden;
+          height: 100vh;
         }
 
-
-
-        /* Mobile shows full image */
-
-        .hero-content {
-            width: 300px;
-            text-align: center;
-            color: white;
-            z-index: 2;
+        .offcanvas.offcanvas-end {
+          width: 50% !important;
         }
+      }
 
-        .hero-button {
-            height: 50px;
-            width: 120px;
-            transition: all 0.3s ease;
-            background-color: white;
-            border: none;
-            border-radius: 0;
-            font-size: 11px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: bold;
+      @media (max-width: 767px) {
+        .hero {
+          aspect-ratio: 9 / 16;
+          height: auto;
         }
+      }
 
-        .hero-button:hover {
-            transform: scale(0.9);
-            background-color: #f8f8f8;
-        }
-
-        /* [STYLE: CATEGORIES] - The Shrink Effect */
-        .category-card {
-            text-decoration: none;
-            color: #000;
-            display: block;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .category-card:hover {
-            transform: scale(0.96);
-        }
-
-        .category-img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        /* [STYLE: MID-BANNERS] - Responsive split images */
+      @media (max-width: 767px) {
         .hero-card {
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: top center;
-            transition: transform 0.3s ease;
-            overflow: hidden;
-            height: 600px;
+          aspect-ratio: 2/3;
+          height: auto;
         }
-
-
-
-        .men-bg {
-            background-image: url('./Media/Homepage/New_Me.jpg');
-        }
-
-        .women-bg {
-            background-image: url('./Media/Homepage/New_Wo.jpg');
-        }
-
-        /* [STYLE: SERVICES] - Video grid */
-        .service-media-wrapper {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            /* Keeps them perfectly square */
-            overflow: hidden;
-            background-color: #000;
-        }
-
-        .service-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Ensures video fills the square without stretching */
-        }
-
-        .service-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .service-text {
-            font-size: 0.85rem;
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            padding: 0 10px;
-            min-height: 80px;
-            /* Keeps heights consistent if text lengths vary */
-        }
-
-        .service-link {
-            font-size: 0.8rem;
-            color: #000;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-link:hover {
-            color: #666;
-            opacity: 0.8;
-        }
-
-        /* [STYLE: BLACK SECTION & REVEAL ANIMATION] */
-        .bg-black {
-            background-color: #000 !important;
-        }
-
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-
-        .reveal-text.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .rotate-icon {
-            transition: transform 0.4s ease;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        .subscribe-trigger:hover .rotate-icon {
-            transform: rotate(90deg);
-        }
-
-        /* [STYLE: OFFCANVAS] - Transparent Backdrop */
-        .offcanvas-backdrop.show {
-            opacity: 0.9;
-
-            background-color: #000;
-        }
-
-        .no-focus-outline:focus {
-            box-shadow: none !important;
-            border-color: #000 !important;
-        }
-
-
-        @media (min-width: 768px) {
-            .hero {
-                height: 100vh;
-            }
-
-            .offcanvas.offcanvas-end {
-                width: 50% !important;
-                /* Adjust how much of the screen it covers */
-            }
-        }
-
-        /* PC View crops to top half */
-        @media (max-width: 767px) {
-            .hero {
-                aspect-ratio: 9 / 16;
-                height: auto;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .hero-card {
-                aspect-ratio: 2/3;
-                height: auto;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-3" href="./homepage.html">GUCCI</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav mx-auto gap-lg-3 text-uppercase small">
-                    <li class="nav-item"><a class="nav-link active" href="./homepage.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./Shop.html">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
-                </ul>
-                <div class="d-flex gap-3 fs-5  position-relative">
-                    <i class="bi bi-heart"></i>
-                    <div class="position-relative">
-                        <i class="bi bi-bag" style="cursor: pointer;" data-bs-toggle="offcanvas"
-                            data-bs-target="#cartOffcanvas"></i>
-                        <span
-                            class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            style="display: none; font-size: 0.6rem; padding: 2px 5px;">0</span>
-                    </div>
-
-                </div>
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="./homepage.html">GUCCI</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto gap-lg-3 text-uppercase small">
+            <li class="nav-item">
+              <a class="nav-link active" href="./homepage.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex gap-3 fs-5 position-relative">
+            <i class="bi bi-heart"></i>
+            <div class="position-relative">
+              <i
+                class="bi bi-bag"
+                style="cursor: pointer"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#cartOffcanvas"
+              ></i>
+              <span
+                class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style="display: none; font-size: 0.6rem; padding: 2px 5px"
+                >0</span
+              >
             </div>
+          </div>
         </div>
+      </div>
     </nav>
 
-
     <!-- La cartolina aqui -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
-        <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title text-uppercase fw-bold" id="cartOffcanvasLabel">Your Bag</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="cartOffcanvas"
+      aria-labelledby="cartOffcanvasLabel"
+    >
+      <div class="offcanvas-header border-bottom">
+        <h5
+          class="offcanvas-title text-uppercase fw-bold"
+          id="cartOffcanvasLabel"
+        >
+          Your Bag
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="cartItemsContainer">
+          <p class="text-muted text-center mt-5">Your bag is empty.</p>
         </div>
-        <div class="offcanvas-body">
-            <div id="cartItemsContainer">
-                <p class="text-muted text-center mt-5">Your bag is empty.</p>
-            </div>
+      </div>
+      <div class="offcanvas-footer p-3 border-top">
+        <div class="d-flex justify-content-between mb-3">
+          <span class="fw-bold">Total:</span>
+          <span id="cartTotal">0 €</span>
         </div>
-        <div class="offcanvas-footer p-3 border-top">
-            <div class="d-flex justify-content-between mb-3">
-                <span class="fw-bold">Total:</span>
-                <span id="cartTotal">0 €</span>
-            </div>
-            <button class="btn btn-dark w-100 text-uppercase" id="checkoutBtn">Checkout</button>
-        </div>
+        <button class="btn btn-dark w-100 text-uppercase" id="checkoutBtn">
+          Checkout
+        </button>
+      </div>
     </div>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="text-uppercase fw-light letter-spacing-2">La Famiglia</h1>
-            <div class="d-flex justify-content-between gap-2">
-                <button class="hero-button">For Her</button>
-                <button class="hero-button">For Him</button>
-            </div>
+      <div class="hero-content">
+        <h1 class="text-uppercase fw-light letter-spacing-2">La Famiglia</h1>
+        <div class="d-flex justify-content-between gap-2">
+          <button class="hero-button">For Her</button>
+          <button class="hero-button">For Him</button>
         </div>
+      </div>
     </section>
 
     <section class="container py-5 text-center">
-        <h2 class="section-title text-uppercase mb-5">Explore the New Styles</h2>
-        <div class="row g-4">
-            <div class="col-12 col-md-3">
-                <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Women'sBags.avif" class="category-img">
-                    <p class="category-title text-uppercase">Women's Handbags</p>
-                </a>
-            </div>
-            <div class="col-12 col-md-3">
-                <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Women'sShoes.avif" class="category-img">
-                    <p class="category-title text-uppercase">Women's Shoes</p>
-                </a>
-            </div>
-            <div class="col-12 col-md-3">
-                <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Men'sShoes.avif" class="category-img">
-                    <p class="category-title text-uppercase">Men's Shoes</p>
-                </a>
-            </div>
-            <div class="col-12 col-md-3">
-                <a href="#" class="category-card">
-                    <img src="./Media/Homepage/Men'sBags.avif" class="category-img">
-                    <p class="category-title text-uppercase">Men's Bags</p>
-                </a>
-            </div>
+      <h2 class="section-title text-uppercase mb-5">Explore the New Styles</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-3">
+          <a href="#" class="category-card">
+            <img src="./Media/Homepage/Women'sBags.avif" class="category-img" />
+            <p class="category-title text-uppercase">Women's Handbags</p>
+          </a>
         </div>
+        <div class="col-12 col-md-3">
+          <a href="#" class="category-card">
+            <img
+              src="./Media/Homepage/Women'sShoes.avif"
+              class="category-img"
+            />
+            <p class="category-title text-uppercase">Women's Shoes</p>
+          </a>
+        </div>
+        <div class="col-12 col-md-3">
+          <a href="#" class="category-card">
+            <img src="./Media/Homepage/Men'sShoes.avif" class="category-img" />
+            <p class="category-title text-uppercase">Men's Shoes</p>
+          </a>
+        </div>
+        <div class="col-12 col-md-3">
+          <a href="#" class="category-card">
+            <img src="./Media/Homepage/Men'sBags.avif" class="category-img" />
+            <p class="category-title text-uppercase">Men's Bags</p>
+          </a>
+        </div>
+      </div>
     </section>
-
-
 
     <section class="container-fluid px-md-5 mb-5">
-        <div class="row g-3">
-            <div class="col-md-6 col-12">
-                <div class="hero-card men-bg d-flex flex-column justify-content-end align-items-center pb-5">
-                    <div class="text-center text-white">
-                        <h2 class="category-title">New In for Men</h2>
-                        <a href="#" class="btn btn-outline-light rounded-0 px-4 py-2 text-uppercase small fw-bold">Shop
-                            Now</a>
-                    </div>
-                </div>
+      <div class="row g-3">
+        <div class="col-md-6 col-12">
+          <div
+            class="hero-card men-bg d-flex flex-column justify-content-end align-items-center pb-5"
+          >
+            <div class="text-center text-white">
+              <h2 class="category-title">New In for Men</h2>
+              <a
+                href="#"
+                class="btn btn-outline-light rounded-0 px-4 py-2 text-uppercase small fw-bold"
+                >Shop Now</a
+              >
             </div>
-            <div class="col-md-6 col-12">
-                <div class="hero-card women-bg d-flex flex-column justify-content-end align-items-center pb-5">
-                    <div class="text-center text-white">
-                        <h2 class="category-title">Women's Mini Bags</h2>
-                        <a href="#" class="btn btn-outline-light rounded-0 px-4 py-2 text-uppercase small fw-bold">Shop
-                            Now</a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="col-md-6 col-12">
+          <div
+            class="hero-card women-bg d-flex flex-column justify-content-end align-items-center pb-5"
+          >
+            <div class="text-center text-white">
+              <h2 class="category-title">Women's Mini Bags</h2>
+              <a
+                href="#"
+                class="btn btn-outline-light rounded-0 px-4 py-2 text-uppercase small fw-bold"
+                >Shop Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-
     <section class="container py-5">
-        <h2 class="text-center text-uppercase mb-5 fw-light" style="letter-spacing: 2px;">Gucci Services</h2>
+      <h2
+        class="text-center text-uppercase mb-5 fw-light"
+        style="letter-spacing: 2px"
+      >
+        Gucci Services
+      </h2>
 
-        <div class="row g-4 justify-content-center">
-            <div class="col-12 col-md-4 text-center">
-                <div class="service-media-wrapper mb-4">
-                    <video autoplay muted loop playsinline class="service-video">
-                        <source src="./Media/Homepage/Personalization.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <h3 class="service-title">PERSONALIZATION</h3>
-                <p class="service-text">
-                    Emboss select bags, luggage, belts and leather accessories with initials to create a truly unique
-                    present.
-                </p>
-                <a href="#" class="service-link">Discover The Collection</a>
-            </div>
-
-            <div class="col-12 col-md-4 text-center">
-                <div class="service-media-wrapper mb-4">
-                    <video autoplay muted loop playsinline class="service-video">
-                        <source src="./Media/Homepage/Book_an_Appointment.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <h3 class="service-title">BOOK AN APPOINTMENT</h3>
-                <p class="service-text">
-                    Enjoy priority access to the boutique of your choice at the time and date that suits you. When you
-                    arrive, your Client Advisor will guide you through a hand-picked selection of pieces for you to
-                    try-on and style.
-                </p>
-                <a href="#" class="service-link">Book an In-Store Appointment</a>
-            </div>
-
-            <div class="col-12 col-md-4 text-center">
-                <div class="service-media-wrapper mb-4">
-                    <video autoplay muted loop playsinline class="service-video">
-                        <source src="./Media/Homepage/Collect_In_Store.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <h3 class="service-title">COLLECT IN STORE</h3>
-                <p class="service-text">
-                    Order online and collect your order from your preferred Gucci boutique.
-                </p>
-                <a href="#" class="service-link">Discover How</a>
-            </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-4 text-center">
+          <div class="service-media-wrapper mb-4">
+            <video autoplay muted loop playsinline class="service-video">
+              <source
+                src="./Media/Homepage/Personalization.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <h3 class="service-title">PERSONALIZATION</h3>
+          <p class="service-text">
+            Emboss select bags, luggage, belts and leather accessories with
+            initials to create a truly unique present.
+          </p>
+          <a href="#" class="service-link">Discover The Collection</a>
         </div>
+
+        <div class="col-12 col-md-4 text-center">
+          <div class="service-media-wrapper mb-4">
+            <video autoplay muted loop playsinline class="service-video">
+              <source
+                src="./Media/Homepage/Book_an_Appointment.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+          <h3 class="service-title">BOOK AN APPOINTMENT</h3>
+          <p class="service-text">
+            Enjoy priority access to the boutique of your choice at the time and
+            date that suits you. When you arrive, your Client Advisor will guide
+            you through a hand-picked selection of pieces for you to try-on and
+            style.
+          </p>
+          <a href="#" class="service-link">Book an In-Store Appointment</a>
+        </div>
+
+        <div class="col-12 col-md-4 text-center">
+          <div class="service-media-wrapper mb-4">
+            <video autoplay muted loop playsinline class="service-video">
+              <source
+                src="./Media/Homepage/Collect_In_Store.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+          <h3 class="service-title">COLLECT IN STORE</h3>
+          <p class="service-text">
+            Order online and collect your order from your preferred Gucci
+            boutique.
+          </p>
+          <a href="#" class="service-link">Discover How</a>
+        </div>
+      </div>
     </section>
 
     <section class="bg-black text-white text-center py-5">
-        <div class="container py-5">
-            <p class="text-uppercase small fw-bold mb-4 reveal-text" style="letter-spacing: 2px;">Sign up for updates
-            </p>
-            <h2 class="display-6 fw-light mb-4 px-md-5 reveal-text">Get exclusive updates on the latest news and
-                personalized communication.</h2>
-            <div class="reveal-text">
-                <button class="btn text-white p-0 border-0 subscribe-trigger" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#newsletterDrawer">
-                    <span class="fs-4 fw-light rotate-icon">+</span>
-                    <span class="fs-4 fw-light">Subscribe</span>
-                </button>
-            </div>
+      <div class="container py-5">
+        <p
+          class="text-uppercase small fw-bold mb-4 reveal-text"
+          style="letter-spacing: 2px"
+        >
+          Sign up for updates
+        </p>
+        <h2 class="display-6 fw-light mb-4 px-md-5 reveal-text">
+          Get exclusive updates on the latest news and personalized
+          communication.
+        </h2>
+        <div class="reveal-text">
+          <button
+            class="btn text-white p-0 border-0 subscribe-trigger"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#newsletterDrawer"
+          >
+            <span class="fs-4 fw-light rotate-icon">+</span>
+            <span class="fs-4 fw-light">Subscribe</span>
+          </button>
         </div>
+      </div>
     </section>
 
-    <div class="offcanvas offcanvas-end w-md-50 w-100" tabindex="-1" id="newsletterDrawer"
-        aria-labelledby="newsletterDrawerLabel">
-        <div class="offcanvas-body p-5 position-relative">
+    <div
+      class="offcanvas offcanvas-end w-md-50 w-100"
+      tabindex="-1"
+      id="newsletterDrawer"
+      aria-labelledby="newsletterDrawerLabel"
+    >
+      <div class="offcanvas-body p-5 position-relative">
+        <button
+          type="button"
+          class="btn-close position-absolute top-0 end-0 m-4"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
 
-            <button type="button" class="btn-close position-absolute top-0 end-0 m-4" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+        <div class="drawer-content mt-5">
+          <h3
+            class="text-uppercase mb-4 fw-light"
+            id="newsletterDrawerLabel"
+            style="letter-spacing: 1px"
+          >
+            Stay up to date with the Gucci newsletter
+          </h3>
+          <p class="small text-muted mb-4">
+            Receive the latest updates straight to your inbox and personalised
+            communication based on your interests.
+          </p>
+          <p class="very-small-text text-muted mb-5">
+            By clicking “SubScrib”, you confirm that you have acknowledged our
+            <a href="#" class="text-dark">Privacy Policy</a> and
+            <a href="#" class="text-dark">Terms of Use</a>...
+            <a href="#" class="text-dark text-decoration-underline"
+              >Read More</a
+            >
+          </p>
 
-            <div class="drawer-content mt-5">
-                <h3 class="text-uppercase mb-4 fw-light" id="newsletterDrawerLabel" style="letter-spacing: 1px;">Stay up
-                    to date with the Gucci newsletter</h3>
-                <p class="small text-muted mb-4">
-                    Receive the latest updates straight to your inbox and personalised communication based on your
-                    interests.
-                </p>
-                <p class="very-small-text text-muted mb-5">
-                    By clicking “SubScrib”, you confirm that you have acknowledged our <a href="#"
-                        class="text-dark">Privacy Policy</a> and <a href="#" class="text-dark">Terms of Use</a>... <a
-                        href="#" class="text-dark text-decoration-underline">Read More</a>
-                </p>
-
-                <form>
-                    <div class="mb-5 border-bottom border-dark">
-                        <input type="email" class="form-control border-0 rounded-0 px-0 py-3 no-focus-outline"
-                            placeholder="Email Address" required>
-                    </div>
-                    <button type="submit"
-                        class="btn btn-black w-100 rounded-0 py-3 fw-bold text-uppercase small">Subscribe</button>
-                </form>
+          <form>
+            <div class="mb-5 border-bottom border-dark">
+              <input
+                type="email"
+                class="form-control border-0 rounded-0 px-0 py-3 no-focus-outline"
+                placeholder="Email Address"
+                required
+              />
             </div>
+            <button
+              type="submit"
+              class="btn btn-black w-100 rounded-0 py-3 fw-bold text-uppercase small"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
+      </div>
     </div>
-
-
-    <!--Footer here !!! -->
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/cartolina.js"></script>
     <script>
-        // [JS: NAVBAR & HERO ZOOM]
-        const navbar = document.querySelector('.navbar-custom');
-        const hero = document.querySelector('.hero');
+      const navbar = document.querySelector(".navbar-custom");
+      const hero = document.querySelector(".hero");
 
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 80);
-            if (window.innerWidth > 768) {
-                hero.style.backgroundSize = `${100 + window.scrollY / 50}%`;
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 80);
+        if (window.innerWidth > 768) {
+          hero.style.backgroundSize = `${100 + window.scrollY / 50}%`;
+        }
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.querySelectorAll(".reveal-text").forEach((el, i) => {
+                setTimeout(() => el.classList.add("active"), i * 200);
+              });
             }
-        });
+          });
+        },
+        { threshold: 0.3 },
+      );
 
-        // [JS: REVEAL ANIMATION] - Trigger when section is in view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.reveal-text').forEach((el, i) => {
-                        setTimeout(() => el.classList.add('active'), i * 200);
-                    });
-                }
-            });
-        }, { threshold: 0.3 });
-
-        observer.observe(document.querySelector('.bg-black'));
+      observer.observe(document.querySelector(".bg-black"));
     </script>
-</body>
-
+  </body>
 </html>

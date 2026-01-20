@@ -1,617 +1,703 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="light">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GUCCI | Product Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
     <style>
-        :root {
-            --gucci-gold: #C19A6B;
-            --gucci-red: #B71C1C;
-            --gucci-green: #1B5E20;
-            --gucci-black: #0A0A0A;
-            --gucci-beige: #F5F5DC;
-        }
+      :root {
+        --gucci-gold: #c19a6b;
+        --gucci-red: #b71c1c;
+        --gucci-green: #1b5e20;
+        --gucci-black: #0a0a0a;
+        --gucci-beige: #f5f5dc;
+      }
 
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: var(--gucci-black);
-        }
+      body {
+        background-color: #f8f9fa;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: var(--gucci-black);
+      }
 
-        .gucci-bg-dark {
-            background-color: var(--gucci-black) !important;
-        }
+      .gucci-bg-dark {
+        background-color: var(--gucci-black) !important;
+      }
 
-        .gucci-text-gold {
-            color: var(--gucci-gold) !important;
-        }
+      .gucci-text-gold {
+        color: var(--gucci-gold) !important;
+      }
 
-        .gucci-border-gold {
-            border-color: var(--gucci-gold) !important;
-        }
+      .gucci-border-gold {
+        border-color: var(--gucci-gold) !important;
+      }
 
-        .gucci-btn-primary {
-            background-color: var(--gucci-black);
-            border: 1px solid var(--gucci-black);
-            color: white;
-            padding: 12px 30px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
+      .gucci-btn-primary {
+        background-color: var(--gucci-black);
+        border: 1px solid var(--gucci-black);
+        color: white;
+        padding: 12px 30px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
 
-        .gucci-btn-primary:hover {
-            background-color: var(--gucci-gold);
-            border-color: var(--gucci-gold);
-            color: var(--gucci-black);
-        }
+      .gucci-btn-primary:hover {
+        background-color: var(--gucci-gold);
+        border-color: var(--gucci-gold);
+        color: var(--gucci-black);
+      }
 
-        .gucci-btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--gucci-black);
-            color: var(--gucci-black);
-            padding: 12px 30px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
+      .gucci-btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--gucci-black);
+        color: var(--gucci-black);
+        padding: 12px 30px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
 
-        .gucci-btn-outline:hover {
-            background-color: var(--gucci-black);
-            color: white;
-        }
+      .gucci-btn-outline:hover {
+        background-color: var(--gucci-black);
+        color: white;
+      }
 
-        .product-header {
-            border-bottom: 1px solid #e0e0e0;
-            padding: 15px 0;
-            background: white;
-        }
+      .product-header {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 15px 0;
+        background: white;
+      }
 
-        .gucci-logo {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-decoration: none;
-            color: var(--gucci-black);
-        }
+      .gucci-logo {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-decoration: none;
+        color: var(--gucci-black);
+      }
 
-        .product-gallery {
-            position: relative;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
+      .product-gallery {
+        position: relative;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
 
+      .main-image {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        cursor: zoom-in;
+      }
+
+      .thumbnail-container {
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        background: white;
+        overflow-x: auto;
+      }
+
+      .thumbnail {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .thumbnail.active {
+        border-color: var(--gucci-gold);
+      }
+
+      .thumbnail:hover {
+        border-color: var(--gucci-gold);
+        opacity: 0.8;
+      }
+
+      .product-video {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        background: #000;
+        border-radius: 8px;
+      }
+
+      .product-info {
+        padding: 40px;
+        background: white;
+        border-radius: 8px;
+      }
+
+      .product-title {
+        font-size: 28px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .product-price {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--gucci-black);
+        margin-bottom: 30px;
+      }
+
+      .product-description {
+        line-height: 1.8;
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      .product-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .meta-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #999;
+        letter-spacing: 1px;
+      }
+
+      .meta-value {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .btn-add-to-cart {
+        flex: 2;
+        background-color: var(--gucci-black);
+        color: white;
+        border: none;
+        padding: 15px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-add-to-cart:hover {
+        background-color: var(--gucci-gold);
+        color: var(--gucci-black);
+      }
+
+      .btn-wishlist {
+        width: 50px;
+        background-color: white;
+        border: 1px solid #e0e0e0;
+        color: var(--gucci-black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .btn-wishlist:hover {
+        border-color: var(--gucci-gold);
+        color: var(--gucci-gold);
+      }
+
+      .product-details {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 30px;
+      }
+
+      .details-title {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        color: #999;
+      }
+
+      .details-content ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .details-content li {
+        padding: 5px 0;
+        color: #666;
+      }
+
+      .details-content li:before {
+        content: "•";
+        color: var(--gucci-gold);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      .related-products {
+        margin-top: 60px;
+        padding: 40px 0;
+        background: white;
+        border-radius: 8px;
+      }
+
+      .related-title {
+        font-size: 20px;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .related-product-card {
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease;
+        display: block;
+      }
+
+      .related-product-card:hover {
+        transform: translateY(-5px);
+        color: inherit;
+      }
+
+      .related-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        margin-bottom: 15px;
+      }
+
+      .related-product-title {
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+      }
+
+      .related-product-price {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .zoom-modal .modal-dialog {
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .zoom-image {
+        width: 100%;
+        height: auto;
+        max-height: 85vh;
+        object-fit: contain;
+      }
+
+      @media (max-width: 768px) {
         .main-image {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            cursor: zoom-in;
-        }
-
-        .thumbnail-container {
-            display: flex;
-            gap: 10px;
-            padding: 15px;
-            background: white;
-            overflow-x: auto;
-        }
-
-        .thumbnail {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .thumbnail.active {
-            border-color: var(--gucci-gold);
-        }
-
-        .thumbnail:hover {
-            border-color: var(--gucci-gold);
-            opacity: 0.8;
-        }
-
-        .product-video {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            background: #000;
-            border-radius: 8px;
+          height: 400px;
         }
 
         .product-info {
-            padding: 40px;
-            background: white;
-            border-radius: 8px;
+          padding: 20px;
         }
 
         .product-title {
-            font-size: 28px;
-            font-weight: 300;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .product-price {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--gucci-black);
-            margin-bottom: 30px;
-        }
-
-        .product-description {
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-
-        .product-meta {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .meta-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #999;
-            letter-spacing: 1px;
-        }
-
-        .meta-value {
-            font-size: 14px;
-            font-weight: 500;
+          font-size: 22px;
         }
 
         .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .btn-add-to-cart {
-            flex: 2;
-            background-color: var(--gucci-black);
-            color: white;
-            border: none;
-            padding: 15px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-add-to-cart:hover {
-            background-color: var(--gucci-gold);
-            color: var(--gucci-black);
+          flex-direction: column;
         }
 
         .btn-wishlist {
-            width: 50px;
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            color: var(--gucci-black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+          width: 100%;
+          height: 50px;
         }
-
-        .btn-wishlist:hover {
-            border-color: var(--gucci-gold);
-            color: var(--gucci-gold);
-        }
-
-        .product-details {
-            border-top: 1px solid #e0e0e0;
-            padding-top: 30px;
-        }
-
-        .details-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            color: #999;
-        }
-
-        .details-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .details-content li {
-            padding: 5px 0;
-            color: #666;
-        }
-
-        .details-content li:before {
-            content: "•";
-            color: var(--gucci-gold);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        .related-products {
-            margin-top: 60px;
-            padding: 40px 0;
-            background: white;
-            border-radius: 8px;
-        }
-
-        .related-title {
-            font-size: 20px;
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .related-product-card {
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s ease;
-            display: block;
-        }
-
-        .related-product-card:hover {
-            transform: translateY(-5px);
-            color: inherit;
-        }
-
-        .related-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            margin-bottom: 15px;
-        }
-
-        .related-product-title {
-            font-size: 14px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .related-product-price {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .zoom-modal .modal-dialog {
-            max-width: 90vw;
-            max-height: 90vh;
-        }
-
-        .zoom-image {
-            width: 100%;
-            height: auto;
-            max-height: 85vh;
-            object-fit: contain;
-        }
-
-        @media (max-width: 768px) {
-            .main-image {
-                height: 400px;
-            }
-
-            .product-info {
-                padding: 20px;
-            }
-
-            .product-title {
-                font-size: 22px;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .btn-wishlist {
-                width: 100%;
-                height: 50px;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <!-- Product Header -->
+  <body>
     <header class="product-header">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-3 col-md-4 col-6">
-                    <a href="./homepage.html" class="gucci-logo">GUCCI</a>
-                </div>
-                <div class="col-lg-6 col-md-4 d-none d-md-block text-center">
-                    <nav>
-                        <a href="index.html" class="text-decoration-none text-dark me-4">Home</a>
-                        <a href="shop.html" class="text-decoration-none text-dark me-4">Shop</a>
-                        <a href="./product-view.html" class="text-decoration-none text-dark">Contact</a>
-                    </nav>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6 text-end">
-                    <div class="d-flex justify-content-end gap-3">
-                        <a href="#" class="text-dark position-relative">
-                            <i class="bi bi-heart fs-5"></i>
-                        </a>
-                        <a href="#" class="text-dark position-relative" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
-                            <i class="bi bi-bag fs-5"></i>
-                            <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
-                                  style="display: none; font-size: 0.6rem; padding: 2px 5px;">0</span>
-                        </a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-3 col-md-4 col-6">
+            <a href="./homepage.html" class="gucci-logo">GUCCI</a>
+          </div>
+          <div class="col-lg-6 col-md-4 d-none d-md-block text-center">
+            <nav>
+              <a href="index.html" class="text-decoration-none text-dark me-4"
+                >Home</a
+              >
+              <a href="shop.html" class="text-decoration-none text-dark me-4"
+                >Shop</a
+              >
+              <a
+                href="./product-view.html"
+                class="text-decoration-none text-dark"
+                >Contact</a
+              >
+            </nav>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6 text-end">
+            <div class="d-flex justify-content-end gap-3">
+              <a href="#" class="text-dark position-relative">
+                <i class="bi bi-heart fs-5"></i>
+              </a>
+              <a
+                href="#"
+                class="text-dark position-relative"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#cartOffcanvas"
+              >
+                <i class="bi bi-bag fs-5"></i>
+                <span
+                  class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  style="display: none; font-size: 0.6rem; padding: 2px 5px"
+                  >0</span
+                >
+              </a>
             </div>
+          </div>
         </div>
+      </div>
     </header>
 
     <main class="py-5">
-        <div class="container">
-            <!-- Breadcrumb -->
-            <nav aria-label="breadcrumb" class="mb-4">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Home</a></li>
-                    <li class="breadcrumb-item"><a href="shop.html" class="text-decoration-none">Shop</a></li>
-                    <li class="breadcrumb-item"><a href="shop.html" class="text-decoration-none"
-                            id="categoryBreadcrumb">Category</a></li>
-                    <li class="breadcrumb-item active" aria-current="page" id="productBreadcrumb">Product</li>
-                </ol>
-            </nav>
+      <div class="container">
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="index.html" class="text-decoration-none">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="shop.html" class="text-decoration-none">Shop</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a
+                href="shop.html"
+                class="text-decoration-none"
+                id="categoryBreadcrumb"
+                >Category</a
+              >
+            </li>
+            <li
+              class="breadcrumb-item active"
+              aria-current="page"
+              id="productBreadcrumb"
+            >
+              Product
+            </li>
+          </ol>
+        </nav>
 
-            <div class="row">
-                <!-- Left Column - Product Images -->
-                <div class="col-lg-7">
-                    <div class="product-gallery">
-                        <!-- Main Image/Video -->
-                        <div id="mainMedia">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="product-gallery">
+              <div id="mainMedia"></div>
 
-                        <!-- Thumbnails -->
-                        <div class="thumbnail-container" id="thumbnailContainer">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column - Product Info -->
-                <div class="col-lg-5">
-                    <div class="product-info">
-                        <h1 class="product-title" id="productTitle">Loading...</h1>
-                        <div class="product-price" id="productPrice">€0.00</div>
-
-                        <div class="product-meta">
-                            <div class="meta-item">
-                                <span class="meta-label">Category</span>
-                                <span class="meta-value" id="productCategory">-</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">Collection</span>
-                                <span class="meta-value">Spring Summer 2026</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">For</span>
-                                <span class="meta-value" id="productGender">-</span>
-                            </div>
-                        </div>
-
-                        <p class="product-description" id="productDescription">
-                            Loading product description...
-                        </p>
-
-                        <div class="action-buttons">
-                            <button class="btn btn-add-to-cart" id="addToCartBtn">
-                                <i class="bi bi-bag me-2"></i>Add to Bag
-                            </button>
-                            <button class="btn btn-wishlist" id="wishlistBtn">
-                                <i class="bi bi-heart"></i>
-                            </button>
-                        </div>
-
-                        <div class="product-details">
-                            <h6 class="details-title">Product Details</h6>
-                            <div class="details-content">
-                                <ul id="productDetailsList">
-                                    <!-- Will be populated by JavaScript -->
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <div class="thumbnail-container" id="thumbnailContainer"></div>
             </div>
+          </div>
 
-            <!-- Related Products -->
-            <div class="related-products">
-                <div class="container">
-                    <h3 class="related-title">You Might Also Like</h3>
-                    <div class="row" id="relatedProductsContainer">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
+          <div class="col-lg-5">
+            <div class="product-info">
+              <h1 class="product-title" id="productTitle">Loading...</h1>
+              <div class="product-price" id="productPrice">€0.00</div>
+
+              <div class="product-meta">
+                <div class="meta-item">
+                  <span class="meta-label">Category</span>
+                  <span class="meta-value" id="productCategory">-</span>
                 </div>
+                <div class="meta-item">
+                  <span class="meta-label">Collection</span>
+                  <span class="meta-value">Spring Summer 2026</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">For</span>
+                  <span class="meta-value" id="productGender">-</span>
+                </div>
+              </div>
+
+              <p class="product-description" id="productDescription">
+                Loading product description...
+              </p>
+
+              <div class="action-buttons">
+                <button class="btn btn-add-to-cart" id="addToCartBtn">
+                  <i class="bi bi-bag me-2"></i>Add to Bag
+                </button>
+                <button class="btn btn-wishlist" id="wishlistBtn">
+                  <i class="bi bi-heart"></i>
+                </button>
+              </div>
+
+              <div class="product-details">
+                <h6 class="details-title">Product Details</h6>
+                <div class="details-content">
+                  <ul id="productDetailsList"></ul>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+
+        <div class="related-products">
+          <div class="container">
+            <h3 class="related-title">You Might Also Like</h3>
+            <div class="row" id="relatedProductsContainer"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <!-- Image Zoom Modal -->
     <div class="modal fade zoom-modal" id="imageZoomModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 bg-transparent">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="" alt="Zoomed Product Image" class="zoom-image" id="zoomedImage">
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 bg-transparent">
+          <div class="modal-header border-0">
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img
+              src=""
+              alt="Zoomed Product Image"
+              class="zoom-image"
+              id="zoomedImage"
+            />
+          </div>
         </div>
+      </div>
     </div>
 
-    <!-- Cart Offcanvas (similar to your shop page) -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
-        <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title text-uppercase fw-bold" id="cartOffcanvasLabel">Your Bag</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="cartOffcanvas"
+      aria-labelledby="cartOffcanvasLabel"
+    >
+      <div class="offcanvas-header border-bottom">
+        <h5
+          class="offcanvas-title text-uppercase fw-bold"
+          id="cartOffcanvasLabel"
+        >
+          Your Bag
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="cartItemsContainer">
+          <p class="text-muted text-center mt-5">Your bag is empty.</p>
         </div>
-        <div class="offcanvas-body">
-            <div id="cartItemsContainer">
-                <p class="text-muted text-center mt-5">Your bag is empty.</p>
-            </div>
+      </div>
+      <div class="offcanvas-footer p-3 border-top">
+        <div class="d-flex justify-content-between mb-3">
+          <span class="fw-bold">Total:</span>
+          <span id="cartTotal">0 €</span>
         </div>
-        <div class="offcanvas-footer p-3 border-top">
-            <div class="d-flex justify-content-between mb-3">
-                <span class="fw-bold">Total:</span>
-                <span id="cartTotal">0 €</span>
-            </div>
-            <button class="btn btn-dark w-100 text-uppercase" id="checkoutBtn">Checkout</button>
-        </div>
+        <button class="btn btn-dark w-100 text-uppercase" id="checkoutBtn">
+          Checkout
+        </button>
+      </div>
     </div>
 
-    <!-- Success Notification (hidden by default) -->
-    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1060;">
-        <div id="successToast" class="toast" role="alert">
-            <div class="toast-header bg-success text-white">
-                <strong class="me-auto">Added to Bag</strong>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-                Product has been added to your shopping bag.
-            </div>
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1060">
+      <div id="successToast" class="toast" role="alert">
+        <div class="toast-header bg-success text-white">
+          <strong class="me-auto">Added to Bag</strong>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="toast"
+          ></button>
         </div>
+        <div class="toast-body">
+          Product has been added to your shopping bag.
+        </div>
+      </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer-checkout"
-        style="background-color: var(--gucci-black); color: white; padding: 40px 0; margin-top: 60px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">GUCCI</h5>
-                    <p class="small text-light">Since 1921, Gucci has represented the pinnacle of Italian craftsmanship
-                        and timeless style.</p>
-                </div>
-                <div class="col-md-2 mb-4">
-                    <h6 class="mb-3">Services</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none small">Contact Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none small">Shipping</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none small">Returns</a></li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none small">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 mb-4">
-                    <h6 class="mb-3">Legal</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none small">Terms of Sale</a>
-                        </li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none small">Privacy Policy</a>
-                        </li>
-                        <li class="mb-2"><a href="#" class="text-light text-decoration-none small">Cookie Policy</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h6 class="mb-3">Stay Connected</h6>
-                    <div class="d-flex gap-3 mb-3">
-                        <a href="#" class="text-light"><i class="bi bi-instagram fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-facebook fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-twitter fs-5"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-pinterest fs-5"></i></a>
-                    </div>
-                    <p class="small text-light mb-0">© 2024 GUCCI. All rights reserved.</p>
-                </div>
+    <footer
+      class="footer-checkout"
+      style="
+        background-color: var(--gucci-black);
+        color: white;
+        padding: 40px 0;
+        margin-top: 60px;
+      "
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h5 class="mb-3">GUCCI</h5>
+            <p class="small text-light">
+              Since 1921, Gucci has represented the pinnacle of Italian
+              craftsmanship and timeless style.
+            </p>
+          </div>
+          <div class="col-md-2 mb-4">
+            <h6 class="mb-3">Services</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-light text-decoration-none small"
+                  >Contact Us</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-light text-decoration-none small"
+                  >Shipping</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-light text-decoration-none small"
+                  >Returns</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-light text-decoration-none small"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-2 mb-4">
+            <h6 class="mb-3">Legal</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-light text-decoration-none small"
+                  >Terms of Sale</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-light text-decoration-none small"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-light text-decoration-none small"
+                  >Cookie Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h6 class="mb-3">Stay Connected</h6>
+            <div class="d-flex gap-3 mb-3">
+              <a href="#" class="text-light"
+                ><i class="bi bi-instagram fs-5"></i
+              ></a>
+              <a href="#" class="text-light"
+                ><i class="bi bi-facebook fs-5"></i
+              ></a>
+              <a href="#" class="text-light"
+                ><i class="bi bi-twitter fs-5"></i
+              ></a>
+              <a href="#" class="text-light"
+                ><i class="bi bi-pinterest fs-5"></i
+              ></a>
             </div>
+            <p class="small text-light mb-0">
+              © 2024 GUCCI. All rights reserved.
+            </p>
+          </div>
         </div>
+      </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/products.js"></script>
     <script>
-        // Your products data
-        
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      function getProductIdFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        return parseInt(params.get("id"));
+      }
 
-        // Get product ID from URL
-        function getProductIdFromURL() {
-            const params = new URLSearchParams(window.location.search);
-            return parseInt(params.get('id'));
-        }
+      function findProductById(id) {
+        return products.find((product) => product.id === id);
+      }
 
-        // Find product by ID
-        function findProductById(id) {
-            return products.find(product => product.id === id);
-        }
+      function getRelatedProducts(currentProduct) {
+        return products
+          .filter(
+            (product) =>
+              product.id !== currentProduct.id &&
+              product.category === currentProduct.category,
+          )
+          .slice(0, 4);
+      }
 
-        // Get related products (same category, excluding current product)
-        function getRelatedProducts(currentProduct) {
-            return products
-                .filter(product =>
-                    product.id !== currentProduct.id &&
-                    product.category === currentProduct.category
-                )
-                .slice(0, 4);
-        }
+      function loadProductDetails() {
+        const productId = getProductIdFromURL();
+        const product = findProductById(productId);
 
-        // Load product details
-        function loadProductDetails() {
-            const productId = getProductIdFromURL();
-            const product = findProductById(productId);
-
-            if (!product) {
-                document.body.innerHTML = `
+        if (!product) {
+          document.body.innerHTML = `
                     <div class="container py-5 text-center">
                         <h2 class="mb-4">Product Not Found</h2>
                         <p class="mb-4">The product you're looking for doesn't exist.</p>
                         <a href="shop.html" class="btn gucci-btn-primary">Back to Shop</a>
                     </div>
                 `;
-                return;
-            }
+          return;
+        }
 
-            // Update page title
-            document.title = `GUCCI | ${product.title}`;
+        document.title = `GUCCI | ${product.title}`;
 
-            // Update breadcrumb
-            document.getElementById('categoryBreadcrumb').textContent = product.category;
-            document.getElementById('productBreadcrumb').textContent = product.title;
+        document.getElementById("categoryBreadcrumb").textContent =
+          product.category;
+        document.getElementById("productBreadcrumb").textContent =
+          product.title;
 
-            // Update product info
-            document.getElementById('productTitle').textContent = product.title;
-            document.getElementById('productPrice').textContent = `€${product.prix.toFixed(2)}`;
-            document.getElementById('productCategory').textContent = product.category;
-            document.getElementById('productGender').textContent = product.wOrm === 'M' ? 'Men' : 'Women';
-            document.getElementById('productDescription').textContent = product.Description;
+        document.getElementById("productTitle").textContent = product.title;
+        document.getElementById("productPrice").textContent =
+          `€${product.prix.toFixed(2)}`;
+        document.getElementById("productCategory").textContent =
+          product.category;
+        document.getElementById("productGender").textContent =
+          product.wOrm === "M" ? "Men" : "Women";
+        document.getElementById("productDescription").textContent =
+          product.Description;
 
-            // Update product details list
-            const detailsList = document.getElementById('productDetailsList');
-            detailsList.innerHTML = `
+        const detailsList = document.getElementById("productDetailsList");
+        detailsList.innerHTML = `
                 <li>Premium Italian craftsmanship</li>
                 <li>High-quality materials</li>
                 <li>Signature Gucci design elements</li>
@@ -620,17 +706,16 @@
                 <li>30-day return policy</li>
             `;
 
-            // Load main media (video first if exists)
-            const mainMedia = document.getElementById('mainMedia');
-            if (product.mainVideo) {
-                mainMedia.innerHTML = `
+        const mainMedia = document.getElementById("mainMedia");
+        if (product.mainVideo) {
+          mainMedia.innerHTML = `
                     <video class="product-video" controls autoplay muted loop>
                         <source src="${product.mainVideo}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 `;
-            } else if (product.images && product.images.length > 0) {
-                mainMedia.innerHTML = `
+        } else if (product.images && product.images.length > 0) {
+          mainMedia.innerHTML = `
                     <img src="${product.images[0]}" 
                          alt="${product.title}" 
                          class="main-image"
@@ -638,19 +723,18 @@
                          data-bs-target="#imageZoomModal"
                          onclick="zoomImage('${product.images[0]}')">
                 `;
-            }
+        }
 
-            // Load thumbnails
-            const thumbnailContainer = document.getElementById('thumbnailContainer');
-            if (product.images && product.images.length > 0) {
-                product.images.forEach((image, index) => {
-                    const thumbnail = document.createElement('img');
-                    thumbnail.src = image;
-                    thumbnail.alt = `${product.title} - View ${index + 1}`;
-                    thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-                    thumbnail.onclick = () => {
-                        // Update main image
-                        mainMedia.innerHTML = `
+        const thumbnailContainer =
+          document.getElementById("thumbnailContainer");
+        if (product.images && product.images.length > 0) {
+          product.images.forEach((image, index) => {
+            const thumbnail = document.createElement("img");
+            thumbnail.src = image;
+            thumbnail.alt = `${product.title} - View ${index + 1}`;
+            thumbnail.className = `thumbnail ${index === 0 ? "active" : ""}`;
+            thumbnail.onclick = () => {
+              mainMedia.innerHTML = `
                             <img src="${image}" 
                                  alt="${product.title}" 
                                  class="main-image"
@@ -659,46 +743,43 @@
                                  onclick="zoomImage('${image}')">
                         `;
 
-                        // Update active thumbnail
-                        document.querySelectorAll('.thumbnail').forEach(thumb => {
-                            thumb.classList.remove('active');
-                        });
-                        thumbnail.classList.add('active');
-                    };
-                    thumbnailContainer.appendChild(thumbnail);
-                });
-            }
-
-            // Load related products
-            loadRelatedProducts(product);
-
-            // Setup add to cart button
-            document.getElementById('addToCartBtn').onclick = () => addToCart(product);
-
-            // Setup wishlist button
-            document.getElementById('wishlistBtn').onclick = () => toggleWishlist(product);
+              document.querySelectorAll(".thumbnail").forEach((thumb) => {
+                thumb.classList.remove("active");
+              });
+              thumbnail.classList.add("active");
+            };
+            thumbnailContainer.appendChild(thumbnail);
+          });
         }
 
-        // Load related products
-        function loadRelatedProducts(currentProduct) {
-            const relatedProducts = getRelatedProducts(currentProduct);
-            const container = document.getElementById('relatedProductsContainer');
+        loadRelatedProducts(product);
 
-            if (relatedProducts.length === 0) {
-                container.innerHTML = `
+        document.getElementById("addToCartBtn").onclick = () =>
+          addToCart(product);
+
+        document.getElementById("wishlistBtn").onclick = () =>
+          toggleWishlist(product);
+      }
+
+      function loadRelatedProducts(currentProduct) {
+        const relatedProducts = getRelatedProducts(currentProduct);
+        const container = document.getElementById("relatedProductsContainer");
+
+        if (relatedProducts.length === 0) {
+          container.innerHTML = `
                     <div class="col-12 text-center py-4">
                         <p class="text-muted">No related products found.</p>
                     </div>
                 `;
-                return;
-            }
+          return;
+        }
 
-            container.innerHTML = '';
-            relatedProducts.forEach(product => {
-                const col = document.createElement('div');
-                col.className = 'col-lg-3 col-md-4 col-sm-6 mb-4';
+        container.innerHTML = "";
+        relatedProducts.forEach((product) => {
+          const col = document.createElement("div");
+          col.className = "col-lg-3 col-md-4 col-sm-6 mb-4";
 
-                col.innerHTML = `
+          col.innerHTML = `
                     <a href="product-view.html?id=${product.id}" class="related-product-card">
                         <img src="${product.images[0]}" 
                              alt="${product.title}" 
@@ -707,90 +788,90 @@
                         <div class="related-product-price">€${product.prix.toFixed(2)}</div>
                     </a>
                 `;
-                container.appendChild(col);
-            });
+          container.appendChild(col);
+        });
+      }
+
+      function addToCart(product) {
+        const existingItemIndex = cart.findIndex(
+          (item) => item.id === product.id,
+        );
+
+        if (existingItemIndex >= 0) {
+          cart[existingItemIndex].quantity += 1;
+        } else {
+          cart.push({
+            id: product.id,
+            title: product.title,
+            prix: product.prix,
+            images: product.images,
+            category: product.category,
+            wOrm: product.wOrm,
+            quantity: 1,
+            addedAt: new Date().toISOString(),
+          });
         }
 
-        // Add to cart function
-        function addToCart(product) {
-            const existingItemIndex = cart.findIndex(item => item.id === product.id);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        showSuccessToast();
+        renderCart();
+      }
 
-            if (existingItemIndex >= 0) {
-                cart[existingItemIndex].quantity += 1;
-            } else {
-                cart.push({
-                    id: product.id,
-                    title: product.title,
-                    prix: product.prix,
-                    images: product.images,
-                    category: product.category,
-                    wOrm: product.wOrm,
-                    quantity: 1,
-                    addedAt: new Date().toISOString()
-                });
-            }
+      function showSuccessToast() {
+        const toast = new bootstrap.Toast(
+          document.getElementById("successToast"),
+        );
+        toast.show();
+      }
 
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            showSuccessToast();
-            renderCart();
+      function toggleWishlist(product) {
+        const wishlistBtn = document.getElementById("wishlistBtn");
+        const isWishlisted = wishlistBtn.classList.contains("text-danger");
+
+        if (isWishlisted) {
+          wishlistBtn.classList.remove("text-danger");
+          wishlistBtn.innerHTML = '<i class="bi bi-heart"></i>';
+        } else {
+          wishlistBtn.classList.add("text-danger");
+          wishlistBtn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+        }
+      }
+
+      window.zoomImage = function (imageSrc) {
+        document.getElementById("zoomedImage").src = imageSrc;
+      };
+
+      function updateCartCount() {
+        const cartCountElements = document.querySelectorAll(".cart-count");
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        cartCountElements.forEach((element) => {
+          element.textContent = totalItems;
+          element.style.display = totalItems > 0 ? "block" : "none";
+        });
+      }
+
+      function renderCart() {
+        const cartItemsContainer =
+          document.getElementById("cartItemsContainer");
+        const cartTotalElement = document.getElementById("cartTotal");
+
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML =
+            '<p class="text-muted text-center mt-5">Your bag is empty.</p>';
+          cartTotalElement.textContent = "0 €";
+          return;
         }
 
-        // Show success toast
-        function showSuccessToast() {
-            const toast = new bootstrap.Toast(document.getElementById('successToast'));
-            toast.show();
-        }
+        let total = 0;
+        let cartHTML = "";
 
-        // Toggle wishlist (simplified version)
-        function toggleWishlist(product) {
-            const wishlistBtn = document.getElementById('wishlistBtn');
-            const isWishlisted = wishlistBtn.classList.contains('text-danger');
+        cart.forEach((item) => {
+          const itemTotal = item.prix * item.quantity;
+          total += itemTotal;
 
-            if (isWishlisted) {
-                wishlistBtn.classList.remove('text-danger');
-                wishlistBtn.innerHTML = '<i class="bi bi-heart"></i>';
-            } else {
-                wishlistBtn.classList.add('text-danger');
-                wishlistBtn.innerHTML = '<i class="bi bi-heart-fill"></i>';
-            }
-        }
-
-        // Zoom image function
-        window.zoomImage = function (imageSrc) {
-            document.getElementById('zoomedImage').src = imageSrc;
-        }
-
-        // Update cart count
-        function updateCartCount() {
-            const cartCountElements = document.querySelectorAll('.cart-count');
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-            cartCountElements.forEach(element => {
-                element.textContent = totalItems;
-                element.style.display = totalItems > 0 ? 'block' : 'none';
-            });
-        }
-
-        // Cart rendering functions (from your shop page)
-        function renderCart() {
-            const cartItemsContainer = document.getElementById('cartItemsContainer');
-            const cartTotalElement = document.getElementById('cartTotal');
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p class="text-muted text-center mt-5">Your bag is empty.</p>';
-                cartTotalElement.textContent = '0 €';
-                return;
-            }
-
-            let total = 0;
-            let cartHTML = '';
-
-            cart.forEach(item => {
-                const itemTotal = item.prix * item.quantity;
-                total += itemTotal;
-
-                cartHTML += `
+          cartHTML += `
                     <div class="cart-item mb-3 pb-3 border-bottom" data-product-id="${item.id}">
                         <div class="d-flex gap-3">
                             <div style="width: 80px; height: 80px; flex-shrink: 0;">
@@ -806,13 +887,13 @@
                                         <i class="bi bi-x"></i>
                                     </button>
                                 </div>
-                                <p class="small text-muted mb-1">${item.category} • ${item.wOrm === 'M' ? 'Men' : 'Women'}</p>
+                                <p class="small text-muted mb-1">${item.category} • ${item.wOrm === "M" ? "Men" : "Women"}</p>
                                 <p class="fw-bold mb-2">${item.prix} €</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
                                         <button class="btn btn-outline-dark btn-sm decrease-qty" 
                                                 data-product-id="${item.id}" 
-                                                ${item.quantity <= 1 ? 'disabled' : ''}>
+                                                ${item.quantity <= 1 ? "disabled" : ""}>
                                             <i class="bi bi-dash"></i>
                                         </button>
                                         <span class="mx-2">${item.quantity}</span>
@@ -827,82 +908,77 @@
                         </div>
                     </div>
                 `;
-            });
-
-            cartItemsContainer.innerHTML = cartHTML;
-            cartTotalElement.textContent = `${total.toFixed(2)} €`;
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function () {
-            loadProductDetails();
-            updateCartCount();
-            renderCart();
-
-            // Setup checkout button
-            document.getElementById('checkoutBtn').addEventListener('click', function () {
-                if (cart.length === 0) {
-                    alert('Your cart is empty. Add some products first.');
-                    return;
-                }
-                window.location.href = 'checkout.html';
-            });
-
-            // Refresh cart when offcanvas opens
-            const cartOffcanvas = document.getElementById('cartOffcanvas');
-            if (cartOffcanvas) {
-                cartOffcanvas.addEventListener('show.bs.offcanvas', function () {
-                    renderCart();
-                });
-            }
         });
 
-        // Event delegation for cart buttons
-        document.addEventListener('click', function (event) {
-            if (event.target.closest('.decrease-qty')) {
-                const button = event.target.closest('.decrease-qty');
-                const productId = parseInt(button.getAttribute('data-product-id'));
-                updateQuantity(productId, -1);
+        cartItemsContainer.innerHTML = cartHTML;
+        cartTotalElement.textContent = `${total.toFixed(2)} €`;
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadProductDetails();
+        updateCartCount();
+        renderCart();
+
+        document
+          .getElementById("checkoutBtn")
+          .addEventListener("click", function () {
+            if (cart.length === 0) {
+              alert("Your cart is empty. Add some products first.");
+              return;
             }
+            window.location.href = "checkout.html";
+          });
 
-            if (event.target.closest('.increase-qty')) {
-                const button = event.target.closest('.increase-qty');
-                const productId = parseInt(button.getAttribute('data-product-id'));
-                updateQuantity(productId, 1);
-            }
-
-            if (event.target.closest('.remove-item-btn')) {
-                const button = event.target.closest('.remove-item-btn');
-                const productId = parseInt(button.getAttribute('data-product-id'));
-                removeItem(productId);
-            }
-        });
-
-        // Update quantity
-        function updateQuantity(productId, change) {
-            const itemIndex = cart.findIndex(item => item.id === productId);
-
-            if (itemIndex >= 0) {
-                cart[itemIndex].quantity += change;
-
-                if (cart[itemIndex].quantity <= 0) {
-                    cart.splice(itemIndex, 1);
-                }
-
-                localStorage.setItem('cart', JSON.stringify(cart));
-                renderCart();
-                updateCartCount();
-            }
-        }
-
-        // Remove item
-        function removeItem(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            localStorage.setItem('cart', JSON.stringify(cart));
+        const cartOffcanvas = document.getElementById("cartOffcanvas");
+        if (cartOffcanvas) {
+          cartOffcanvas.addEventListener("show.bs.offcanvas", function () {
             renderCart();
-            updateCartCount();
+          });
         }
+      });
+
+      document.addEventListener("click", function (event) {
+        if (event.target.closest(".decrease-qty")) {
+          const button = event.target.closest(".decrease-qty");
+          const productId = parseInt(button.getAttribute("data-product-id"));
+          updateQuantity(productId, -1);
+        }
+
+        if (event.target.closest(".increase-qty")) {
+          const button = event.target.closest(".increase-qty");
+          const productId = parseInt(button.getAttribute("data-product-id"));
+          updateQuantity(productId, 1);
+        }
+
+        if (event.target.closest(".remove-item-btn")) {
+          const button = event.target.closest(".remove-item-btn");
+          const productId = parseInt(button.getAttribute("data-product-id"));
+          removeItem(productId);
+        }
+      });
+
+      function updateQuantity(productId, change) {
+        const itemIndex = cart.findIndex((item) => item.id === productId);
+
+        if (itemIndex >= 0) {
+          cart[itemIndex].quantity += change;
+
+          if (cart[itemIndex].quantity <= 0) {
+            cart.splice(itemIndex, 1);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          renderCart();
+          updateCartCount();
+        }
+      }
+
+      function removeItem(productId) {
+        cart = cart.filter((item) => item.id !== productId);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+        updateCartCount();
+      }
     </script>
-</body>
-
+  </body>
 </html>

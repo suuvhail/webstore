@@ -121,7 +121,6 @@ body {
   text-decoration: underline;
 }
 
-/* Fade + slide animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -134,11 +133,9 @@ body {
   }
 }
 
-
 .gucci-contact {
   animation: fadeUp 0.8s ease forwards;
 }
-
 
 .gucci-form {
   animation: fadeUp 0.8s ease forwards;
@@ -167,7 +164,6 @@ body {
   transform: translateY(-6px);
 }
 
-/* Cart Offcanvas Styles */
 #cartOffcanvas {
   width: 400px !important;
 }
