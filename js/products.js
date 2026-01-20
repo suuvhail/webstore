@@ -139,6 +139,28 @@ const products = [
         wOrm: "W",
         category: "Shoes",
 
+    },
+    {
+        id: 14,
+        title: "Women's boot with half Horsebit",
+        prix: 1700,
+        Description: "In the Fall Winter 2025 collection, a nod to the House's equestrian past, the Horsebit has become both a historical and contemporary emblem throughout the years. In this version, the half Horsebit hardware defines this pair of boots crafted in soft suede.",
+        mainVideo: "Media/Products/wo/Shoes/wsh5-vd.mp4",
+        images: ["Media/Products/wo/Shoes/wsh5-im1.avif", "Media/Products/wo/Shoes/wsh5-im2.png", "Media/Products/wo/Shoes/wsh5-im3.avif"],
+        wOrm: "W",
+        category: "Shoes",
+
+    },
+    {
+        id: 15,
+        title: "Men's Stretch low-top sneaker",
+        prix: 980,
+        Description: "Introducing Spring Summer 2026. This new design reimagines the House's signature sneaker in a light, soft and flexible silhouette for the La Famiglia collection. Crafted from soft stretchy leather, the style has been treated by hand to achieve a worn-out appearance which makes every pair unique.",
+        mainVideo: "Media/Products/m/Shoes/msh4-vd.mp4",
+        images: ["Media/Products/m/Shoes/msh4-im1.avif", "Media/Products/m/Shoes/msh4-im2.avif", "Media/Products/m/Shoes/msh4-im3.avif"],
+        wOrm: "M",
+        category: "Shoes",
+
     }
 
 
