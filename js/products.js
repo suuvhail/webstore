@@ -128,6 +128,20 @@ const products = [
         wOrm: "W",
         category: "bags",
 
+    },
+    {
+        id: 13,
+        title: "Women's crystal Bombshell slide sandal",
+        prix: 1650,
+        Description: 'Introducing Spring Summer 2026. This style is featured in "La Bomba N.2" and "La Drama Queen" looks of La Famiglia. Defined by a stiletto heel in silver-toned finish, the evening style is crafted from GG crystal mesh on a silk satin base, and complements the ready-to-wear narrative with a sparkling touch.',
+        mainVideo: "Media/Products/wo/Shoes/wsh4-vd.mp4",
+        images: ["Media/Products/wo/Shoes/wsh4-im1.webp", "Media/Products/wo/Shoes/wsh4-im2.avif", "Media/Products/wo/Shoes/wsh4-im3.avif"],
+        wOrm: "W",
+        category: "Shoes",
+
     }
+
+
+
 
 ]
